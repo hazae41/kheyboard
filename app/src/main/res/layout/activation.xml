@@ -7,6 +7,21 @@
         android:layout_height="match_parent"
         tools:context=".Main">
 
+    <TextView
+            android:text="Fais défiler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nextlabel2" android:textSize="18sp" app:layout_constraintEnd_toStartOf="@+id/nextbtn"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"/>
+    <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="20dp" app:srcCompat="@drawable/ic_send"
+            android:id="@+id/nextbtn"
+            android:background="@android:color/transparent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp" android:tint="@color/colorAccent" android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
     <Button
             android:text="Activer"
             android:layout_width="wrap_content"

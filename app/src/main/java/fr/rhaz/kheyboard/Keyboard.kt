@@ -70,7 +70,7 @@ class Kheyboard : InputMethodService() {
         fun Button.clicked(){
             buttons.forEach { it.unselected() }
             selected()
-            display()
+            if(::data.isInitialized) display()
         }
 
         buttons.forEach { button ->
