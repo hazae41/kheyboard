@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:id="@+id/layout">
+    <ImageView
+            android:layout_width="160dp"
+            android:layout_height="30dp" app:srcCompat="@android:color/transparent"
+            android:id="@+id/logo" android:background="@drawable/risibank" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:adjustViewBounds="true" android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp" app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.497" android:layout_marginTop="8dp"/>
+    <android.support.v7.widget.RecyclerView
+            android:clipToPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" android:orientation="horizontal"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" android:id="@+id/list"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+    />
+    <Button
+            android:text="Nouveaux"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/nouveauxbtn"
+            app:layout_constraintStart_toStartOf="parent" android:background="@android:color/transparent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/populairesbtn"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintTop_toBottomOf="@+id/list" android:layout_marginTop="8dp"/>
+    <Button
+            android:text="Populaires"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/populairesbtn"
+            app:layout_constraintStart_toEndOf="@+id/nouveauxbtn"
+            android:background="@android:color/transparent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/favorisbtn"
+            app:layout_constraintTop_toBottomOf="@+id/list" android:layout_marginTop="8dp"/>
+    <Button
+            android:text="Aléatoires"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/aleatoiresbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent" app:layout_constraintStart_toEndOf="@+id/favorisbtn"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintTop_toBottomOf="@+id/list"
+            android:layout_marginTop="8dp"/>
+    <Button
+            android:text="Favoris"
+            android:layout_height="wrap_content"
+            android:id="@+id/favorisbtn"
+            app:layout_constraintEnd_toStartOf="@+id/aleatoiresbtn"
+            android:background="@android:color/transparent" app:layout_constraintStart_toEndOf="@+id/populairesbtn"
+            app:layout_constraintHorizontal_bias="0.5" android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/list" android:layout_marginTop="8dp"/>
+    <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/refreshbtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            android:background="@drawable/ic_refresh" android:adjustViewBounds="true"/>
+    <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/addbtn"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_add" android:adjustViewBounds="true"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"/>
+</android.support.constraint.ConstraintLayout>
+
