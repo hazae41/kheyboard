@@ -17,7 +17,7 @@ Version minimale: Android KitKat (4.4)
 #### S'intègre à n'importe quelle application
 Vous pouvez utiliser cette application n'importe où du moment que vous avez un texte à éditer
 
-#### Désign propre
+#### Design propre
 Le design a été soigné pour qu'il soit le plus simple, intemporel et propre possible
 
 #### Performances correctes
