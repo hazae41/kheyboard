@@ -6,7 +6,7 @@
 
 Vous pouvez enfin envoyer vos stickers préférés sur JVC ou à vos contacts sans avoir à copier coller des liens farfelus ou à installer de navigateur spécial 🔥
 
-[![](https://i.imgur.com/M7IGiej.png)](https://play.google.com/store/apps/details?id=fr.rhaz.kheyboard)
+[![](https://i.imgur.com/9nKVtxf.png)](https://play.google.com/store/apps/details?id=fr.rhaz.kheyboard)
 
 ### [Téléchargement](https://github.com/RHazDev/Kheyboard/raw/master/apk/kheyboard-1.0.apk)
 Version minimale: Android KitKat (4.4) 
