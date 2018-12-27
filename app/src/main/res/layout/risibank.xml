@@ -7,15 +7,20 @@
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
         android:id="@+id/layout">
+    <android.inputmethodservice.KeyboardView android:layout_width="0dp" android:layout_height="0dp"
+                                             android:visibility="invisible"
+                                             app:layout_constraintStart_toStartOf="parent"
+                                             app:layout_constraintTop_toTopOf="parent" android:id="@+id/keyboard"/>
     <ImageView
             android:layout_width="160dp"
             android:layout_height="30dp" app:srcCompat="@android:color/transparent"
             android:id="@+id/logo" android:background="@drawable/risibank" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:adjustViewBounds="true" android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp" app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.497" android:layout_marginTop="8dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:adjustViewBounds="true"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/refreshbtn" android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/backspacebtn"/>
     <android.support.v7.widget.RecyclerView
             android:clipToPadding="false"
             android:layout_width="wrap_content"
@@ -62,9 +67,25 @@
             android:layout_height="30dp"
             android:id="@+id/refreshbtn"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
-            android:background="@drawable/ic_refresh" android:adjustViewBounds="true"/>
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_refresh" android:adjustViewBounds="true"
+            app:layout_constraintStart_toEndOf="@+id/addbtn" android:layout_marginStart="32dp"/>
+    <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/backspacebtn"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_keyboard_backspace_black_24dp" android:adjustViewBounds="true"
+            android:layout_marginEnd="32dp" app:layout_constraintEnd_toStartOf="@+id/returnbtn"/>
+    <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/returnbtn"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_keyboard_return" android:adjustViewBounds="true"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
     <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
