@@ -44,7 +44,7 @@
             android:layout_marginBottom="16dp" android:tint="@color/colorAccent" android:adjustViewBounds="true"
             android:scaleType="fitCenter"/>
     <TextView
-            android:text="Astuce: appuie sur le logo Risibank pour changer rapidement de clavier"
+            android:text="Appuie sur le logo Risibank pour changer rapidement de clavier"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/astuce" android:layout_marginTop="8dp"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="14sp" android:layout_marginStart="24dp" android:layout_marginEnd="24dp"/>
     <TextView
-            android:text="Astuce 2: utilise Gboard et maintient la barre d'espace pour revenir rapidement"
+            android:text="Si tu utilises Gboard, maintient la barre d'espace pour revenir rapidement"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/astuce2" android:layout_marginTop="8dp"
