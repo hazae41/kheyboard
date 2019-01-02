@@ -3,14 +3,13 @@ package fr.rhaz.kheyboard
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
+import android.content.Intent.*
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.webkit.URLUtil
 import com.bumptech.glide.Glide
@@ -19,7 +18,15 @@ import kotlinx.android.synthetic.main.activation.*
 import kotlinx.android.synthetic.main.activity.*
 import kotlinx.android.synthetic.main.selection.*
 import kotlinx.android.synthetic.main.test.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
+import android.view.*
+import com.android.billingclient.api.BillingClient
+import com.android.billingclient.api.BillingClientStateListener
+import com.android.billingclient.api.Purchase
+import com.android.billingclient.util.BillingHelper
+import org.jetbrains.anko.customView
+
 
 val Context.ctx get() = this
 
@@ -45,6 +52,21 @@ class Main : AppCompatActivity() {
         if (pager.currentItem != 0)
             pager.currentItem--
         else super.onBackPressed()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu) = true.also{
+        menuInflater.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when(item.itemId){
+        R.id.action_rate -> true.also{
+            val uri = Uri.parse("market://details?id=$packageName")
+            val intent = Intent(ACTION_VIEW, uri)
+            intent.addFlags(FLAG_ACTIVITY_NO_HISTORY or FLAG_ACTIVITY_MULTIPLE_TASK)
+            startActivity(intent)
+        }
+        R.id.action_donate -> true.also{ startBilling() }
+        else -> false
     }
 }
 

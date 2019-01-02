@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Faire un don" android:id="@+id/action_donate"/>
+    <item android:title="Noter l'application" android:id="@+id/action_rate"/>
+    <!--<item android:title="Options"/>-->
+</menu>
