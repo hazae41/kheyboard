@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.support.v13.view.inputmethod.EditorInfoCompat
 import android.support.v13.view.inputmethod.InputConnectionCompat
 import android.support.v13.view.inputmethod.InputContentInfoCompat
+import android.support.v4.content.FileProvider
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,12 @@ import android.webkit.URLUtil
 import android.widget.ImageButton
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
+import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.longToast
@@ -27,6 +33,7 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.vibrator
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 
 val Context.clipboardManager: ClipboardManager
     get() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -101,15 +108,23 @@ class Kheyboard: InputMethodService() {
             }
         }
 
-        fun commitImage(url: String) = Glide.with(ctx).asBitmap().load(url).into(bitmapReceiver { commitImage(it) })
+        fun commitImage(url: String) = Glide.with(ctx).download(url).listener(object: RequestListener<File>{
+            override fun onLoadFailed(
+                e: GlideException?, model: Any?, target: Target<File>?, isFirstResource: Boolean
+            ) = false
+            override fun onResourceReady(
+                resource: File, model: Any?,
+                target: Target<File>?, dataSource: DataSource?,
+                isFirstResource: Boolean
+            ) = false.also{
+                val file = File(ctx.getExternalFilesDir(null)!!, "stickers/sticker.gif")
+                resource.copyTo(file, true)
+                commitImage(file)
+            }
+        }).submit()
 
-        fun bitmapReceiver(then: (Bitmap) -> Unit) = object: SimpleTarget<Bitmap>(){
-            override fun onResourceReady(img: Bitmap, transition: Transition<in Bitmap>?) = then(img)
-        }
-
-        fun commitImage(img: Bitmap){
-            val str = MediaStore.Images.Media.insertImage(contentResolver, img, "Sticker", "Sticker")
-            val uri = Uri.parse(str)
+        fun commitImage(file: File){
+            val uri = FileProvider.getUriForFile(ctx, "fr.rhaz.kheyboard.fileprovider", file)
             val clip = ClipDescription("Sticker", arrayOf("image/gif"))
             val inputContentInfo = InputContentInfoCompat(uri, clip, null)
             val inputConnection = currentInputConnection
