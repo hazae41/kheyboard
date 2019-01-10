@@ -2,5 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Faire un don" android:id="@+id/action_donate"/>
     <item android:title="Noter l'application" android:id="@+id/action_rate"/>
+    <item android:title="Options" android:id="@+id/action_options"/>
     <!--<item android:title="Options"/>-->
 </menu>

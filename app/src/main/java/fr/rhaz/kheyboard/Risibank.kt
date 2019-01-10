@@ -10,6 +10,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.risibank.view.*
+import org.jetbrains.anko.inputMethodManager
 import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
 import org.json.JSONObject
@@ -38,7 +39,7 @@ fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
         when (this) {
             nouveauxbtn -> list.display(data.getJSONArray("tms"))
             populairesbtn -> list.display(data.getJSONArray("views"))
-            favorisbtn -> list.display(config.array("favoris"))
+            favorisbtn -> list.display(Config.config.array("favoris"))
             aleatoiresbtn -> list.display(data.getJSONArray("random"))
             else -> {}
         }

@@ -9,6 +9,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.azerty.view.*
 import org.jetbrains.anko.toast
+import org.jetbrains.anko.vibrator
 import org.json.JSONObject
 
 fun Kheyboard.Azerty() = inflate(R.layout.azerty){
@@ -36,14 +37,17 @@ fun Kheyboard.Azerty() = inflate(R.layout.azerty){
 
     fun write(char: String): () -> Unit = {
         input.text.insert(input.selectionEnd, char)
+        if(Config.vibrations) vibrator.vibrate(100)
     }
 
     val backspace: () -> Unit = {
         if (input.length() > 0) {
             if (input.hasSelection()) {
                 input.text.delete(input.selectionStart, input.selectionEnd)
-            } else
+            } else{
                 input.text.delete(input.selectionEnd - 1, input.selectionEnd)
+            }
+            if(Config.vibrations) vibrator.vibrate(100)
         }
     }
 

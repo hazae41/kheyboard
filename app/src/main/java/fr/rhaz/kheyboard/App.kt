@@ -1,5 +1,7 @@
 package fr.rhaz.kheyboard
 
+import android.Manifest.permission.*
+import android.app.Activity
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
@@ -7,8 +9,10 @@ import android.content.Intent.*
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.content.PermissionChecker.*
 import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.InputMethodManager
 import android.webkit.URLUtil
@@ -18,14 +22,10 @@ import kotlinx.android.synthetic.main.activation.*
 import kotlinx.android.synthetic.main.activity.*
 import kotlinx.android.synthetic.main.selection.*
 import kotlinx.android.synthetic.main.test.*
-import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
 import android.view.*
-import com.android.billingclient.api.BillingClient
-import com.android.billingclient.api.BillingClientStateListener
-import com.android.billingclient.api.Purchase
-import com.android.billingclient.util.BillingHelper
-import org.jetbrains.anko.customView
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.okButton
 
 
 val Context.ctx get() = this
@@ -44,8 +44,23 @@ class Main : AppCompatActivity() {
 
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
-        setContentView(activity)
-        pager.adapter = adapter
+        requestPerm()
+    }
+
+    fun requestPerm() = ActivityCompat.requestPermissions(ctx as Activity, arrayOf(WRITE_EXTERNAL_STORAGE), 1)
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if(grantResults.all { it == PERMISSION_GRANTED }){
+            setContentView(activity)
+            pager.adapter = adapter
+        }
+        else alert {
+            isCancelable = false
+            title = "Permission refusée"
+            message = "Kheyboard a besoin d'un accès au stockage pour pouvoir enregistrer les stickers"
+            okButton { requestPerm() }
+            show()
+        }
     }
 
     override fun onBackPressed() {
@@ -66,6 +81,7 @@ class Main : AppCompatActivity() {
             startActivity(intent)
         }
         R.id.action_donate -> true.also{ startBilling() }
+        R.id.action_options -> true.also { Config.show() }
         else -> false
     }
 }
