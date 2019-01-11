@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent" android:id="@+id/laout"
-                                             android:background="@android:color/white">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:id="@+id/laout"
+    android:background="@android:color/white">
 
     <TextView
             android:text="A"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreA"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -18,8 +18,8 @@
             android:layout_marginStart="16dp" app:layout_constraintHorizontal_chainStyle="spread_inside"/>
     <TextView
             android:text="Z"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreZ"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -27,8 +27,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreE"/>
     <TextView
             android:text="E"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreE"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -36,8 +36,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreR"/>
     <TextView
             android:text="R"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreR"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -45,8 +45,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreT"/>
     <TextView
             android:text="T"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreT"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -54,8 +54,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreY"/>
     <TextView
             android:text="Y"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreY"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -63,8 +63,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreU"/>
     <TextView
             android:text="U"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreU"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -72,8 +72,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreI"/>
     <TextView
             android:text="I"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreI"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -81,8 +81,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreO"/>
     <TextView
             android:text="P"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreP"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -92,8 +92,8 @@
             android:layout_marginEnd="16dp"/>
     <TextView
             android:text="O"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreO"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -101,8 +101,8 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreP"/>
     <TextView
             android:text="Q"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreQ"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -112,8 +112,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreS"/>
     <TextView
             android:text="S"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreS"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -122,8 +122,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreD"/>
     <TextView
             android:text="J"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreJ"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -132,8 +132,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreK"/>
     <TextView
             android:text="H"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreH"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -142,8 +142,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreJ"/>
     <TextView
             android:text="G"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreG"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -152,8 +152,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreH"/>
     <TextView
             android:text="F"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreF"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -162,8 +162,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreG"/>
     <TextView
             android:text="D"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreD"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -172,8 +172,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreF"/>
     <TextView
             android:text="K"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreK"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -182,8 +182,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreL"/>
     <TextView
             android:text="L"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreL"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -192,7 +192,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreM"/>
     <Button
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:id="@+id/spacebar" android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/risibankbtn" android:layout_marginStart="8dp"
@@ -206,8 +206,8 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/input" android:layout_marginBottom="8dp"/>
     <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:id="@+id/backspacebtn"
             android:background="@drawable/ic_backspace"
             app:layout_constraintStart_toEndOf="@+id/lettreN" app:layout_constraintHorizontal_bias="0.5"
@@ -215,8 +215,8 @@
             app:layout_constraintBottom_toTopOf="@+id/searchbtn"/>
     <TextView
             android:text="N"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreN"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -225,8 +225,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/backspacebtn"/>
     <TextView
             android:text="B"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreB"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -235,8 +235,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreN"/>
     <TextView
             android:text="V"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreV"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -245,8 +245,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreB"/>
     <TextView
             android:text="C"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreC"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -255,8 +255,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreV"/>
     <TextView
             android:text="X"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreX"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -265,8 +265,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreC"/>
     <TextView
             android:text="W"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreW"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -276,8 +276,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/lettreX"/>
     <TextView
             android:text="M"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:id="@+id/lettreM"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -295,8 +295,8 @@
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/lettreP"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/deletebtn"/>
     <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:id="@+id/risibankbtn"
             android:background="@drawable/risibank_icon"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="24dp"
@@ -310,8 +310,8 @@
             app:layout_constraintBottom_toTopOf="@+id/deletebtn" app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/list"/>
     <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp" android:id="@+id/searchbtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp" android:id="@+id/searchbtn"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="24dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:background="@drawable/ic_search_full"/>
