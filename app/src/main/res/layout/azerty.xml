@@ -15,7 +15,7 @@
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="@+id/lettreZ" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/lettreZ"
-            android:layout_marginStart="16dp" app:layout_constraintHorizontal_chainStyle="spread"/>
+            android:layout_marginStart="16dp" app:layout_constraintHorizontal_chainStyle="spread_inside"/>
     <TextView
             android:text="Z"
             android:layout_width="40dp"
@@ -108,7 +108,7 @@
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/lettreS" android:layout_marginStart="16dp"
-            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintBottom_toBottomOf="@+id/lettreS"/>
     <TextView
             android:text="S"
