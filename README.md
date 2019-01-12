@@ -41,6 +41,6 @@ Les stickers actuels ne vous interessent pas ? Aucun problème, vous avez juste 
 L'application peut être installée sur tous les appareils Android à partir de la version 4.4, cela représente environ 95% des appareils Android, donc vous n'avez pas d'excuse 🦄
 
 #### Avant-gardiste
-L'application est codée en Kotlin, le nouveau langage officiel d'Androd, et utilis le SDK 28 d'Android, ce qui correspond à la dernière version Android en date (Android Pie 9.0)
+L'application est codée en Kotlin, le nouveau langage officiel d'Android, et utilise le SDK 28 d'Android, ce qui correspond à la dernière version Android en date (Android Pie 9.0)
 
 Ces deux atouts font que l'application a pu être développée dans de bonnes conditions et qu'aucun octet n'a été maltraité durant sa compilation 🌈
