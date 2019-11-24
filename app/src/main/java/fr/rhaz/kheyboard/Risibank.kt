@@ -2,7 +2,6 @@ package fr.rhaz.kheyboard
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.os.Handler
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -10,8 +9,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.risibank.view.*
-import org.jetbrains.anko.inputMethodManager
-import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 
@@ -35,13 +32,14 @@ fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
 
     val buttons = listOf(nouveauxbtn, populairesbtn, favorisbtn, aleatoiresbtn)
 
-    fun Button.display(){
+    fun Button.display() {
         when (this) {
             nouveauxbtn -> list.display(data.getJSONArray("tms"))
             populairesbtn -> list.display(data.getJSONArray("views"))
             favorisbtn -> list.display(Config.config.array("favoris"))
             aleatoiresbtn -> list.display(data.getJSONArray("random"))
-            else -> {}
+            else -> {
+            }
         }
     }
 
@@ -96,9 +94,9 @@ fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
     addbtn.setOnClickListener {
         val clipboard = clipboardManager.primaryClip?.getItemAt(0)
         val url = clipboard?.text?.toString()
-        if(url == null)
+        if (url == null)
             toast("Copiez un lien pour l'ajouter aux favoris")
-        else{
+        else {
             favorite(url)
             favorisbtn.clicked()
         }
@@ -106,11 +104,10 @@ fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
 
     list.adapter = StickerAdapter().apply {
         longClick = { position ->
-            if (selectedbtn == favorisbtn){
+            if (selectedbtn == favorisbtn) {
                 unfavorite(selected[position])
                 favorisbtn.display()
-            }
-            else favorite(selected[position])
+            } else favorite(selected[position])
         }
     }
 

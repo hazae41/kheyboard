@@ -3,12 +3,8 @@ package fr.rhaz.kheyboard
 import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
-import android.graphics.Bitmap
 import android.inputmethodservice.InputMethodService
-import android.net.Uri
 import android.os.Build
-import android.os.VibrationEffect
-import android.provider.MediaStore
 import android.support.v13.view.inputmethod.EditorInfoCompat
 import android.support.v13.view.inputmethod.InputConnectionCompat
 import android.support.v13.view.inputmethod.InputContentInfoCompat
@@ -22,11 +18,8 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
@@ -38,26 +31,34 @@ import java.io.File
 val Context.clipboardManager: ClipboardManager
     get() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-class Kheyboard: InputMethodService() {
+class Kheyboard : InputMethodService() {
 
-    fun inflate(id: Int, builder: View.() -> Unit = {})
-    = layoutInflater.inflate(id, null).apply(builder)
+    fun inflate(id: Int, builder: View.() -> Unit = {}) =
+        layoutInflater.inflate(id, null).apply(builder)
 
-    fun risibank() { setInputView(Risibank()) }
-    fun azerty() { setInputView(Azerty()) }
+    fun risibank() {
+        setInputView(Risibank())
+    }
+
+    fun azerty() {
+        setInputView(Azerty())
+    }
+
     override fun onCreateInputView() = Risibank()
 
     fun JSONObject.array(name: String) =
-        if(name in keys().asSequence())
+        if (name in keys().asSequence())
             getJSONArray(name)
         else JSONArray()
 
     fun favorite(url: String) {
         if (!URLUtil.isValidUrl(url)) toast("URL invalide")
         else Config.json {
-            put("favoris", array("favoris").put(
-                JSONObject().put("risibank_link", url)
-            ))
+            put(
+                "favoris", array("favoris").put(
+                    JSONObject().put("risibank_link", url)
+                )
+            )
         }
         longToast("Ajouté $url")
     }
@@ -95,7 +96,7 @@ class Kheyboard: InputMethodService() {
 
     class Sticker(val data: ImageButton) : RecyclerView.ViewHolder(data)
 
-    inner class StickerAdapter: RecyclerView.Adapter<Sticker>() {
+    inner class StickerAdapter : RecyclerView.Adapter<Sticker>() {
         var longClick: (Int) -> Unit = { position -> }
 
         override fun getItemCount() = selected.size
@@ -108,22 +109,24 @@ class Kheyboard: InputMethodService() {
             }
         }
 
-        fun commitImage(url: String) = Glide.with(ctx).download(url).listener(object: RequestListener<File>{
-            override fun onLoadFailed(
-                e: GlideException?, model: Any?, target: Target<File>?, isFirstResource: Boolean
-            ) = false
-            override fun onResourceReady(
-                resource: File, model: Any?,
-                target: Target<File>?, dataSource: DataSource?,
-                isFirstResource: Boolean
-            ) = false.also{
-                val file = File(ctx.getExternalFilesDir(null)!!, "stickers/sticker.gif")
-                resource.copyTo(file, true)
-                commitImage(file)
-            }
-        }).submit()
+        fun commitImage(url: String) =
+            Glide.with(ctx).download(url).listener(object : RequestListener<File> {
+                override fun onLoadFailed(
+                    e: GlideException?, model: Any?, target: Target<File>?, isFirstResource: Boolean
+                ) = false
 
-        fun commitImage(file: File){
+                override fun onResourceReady(
+                    resource: File, model: Any?,
+                    target: Target<File>?, dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ) = false.also {
+                    val file = File(ctx.getExternalFilesDir(null)!!, "stickers/sticker.gif")
+                    resource.copyTo(file, true)
+                    commitImage(file)
+                }
+            }).submit()
+
+        fun commitImage(file: File) {
             val uri = FileProvider.getUriForFile(ctx, "fr.rhaz.kheyboard.fileprovider", file)
             val clip = ClipDescription("Sticker", arrayOf("image/gif"))
             val inputContentInfo = InputContentInfoCompat(uri, clip, null)
@@ -133,7 +136,13 @@ class Kheyboard: InputMethodService() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
                 flags = flags or InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
             }
-            InputConnectionCompat.commitContent(inputConnection, editorInfo, inputContentInfo, flags, null)
+            InputConnectionCompat.commitContent(
+                inputConnection,
+                editorInfo,
+                inputContentInfo,
+                flags,
+                null
+            )
         }
 
         override fun onBindViewHolder(holder: Sticker, position: Int) {
@@ -143,9 +152,9 @@ class Kheyboard: InputMethodService() {
                 val gifSupport = types.any {
                     ClipDescription.compareMimeTypes(it, "image/gif")
                 }
-                if(gifSupport && !Config.useUrls) commitImage(selected[position])
+                if (gifSupport && !Config.useUrls) commitImage(selected[position])
                 else currentInputConnection.commitText(selected[position], 1)
-                if(Config.vibrations) vibrator.vibrate(100)
+                if (Config.vibrations) vibrator.vibrate(100)
             }
             holder.data.setOnLongClickListener {
                 longClick(position)
