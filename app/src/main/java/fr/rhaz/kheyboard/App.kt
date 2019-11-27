@@ -25,15 +25,16 @@ import android.view.inputmethod.InputMethodManager
 import android.webkit.URLUtil
 import com.bumptech.glide.Glide
 import fr.rhaz.kheyboard.R.layout.activation
-import fr.rhaz.kheyboard.R.layout.activity
+import fr.rhaz.kheyboard.R.layout.app
 import fr.rhaz.kheyboard.R.layout.selection
 import fr.rhaz.kheyboard.R.layout.test
 import kotlinx.android.synthetic.main.activation.*
-import kotlinx.android.synthetic.main.activity.*
+import kotlinx.android.synthetic.main.app.*
 import kotlinx.android.synthetic.main.selection.*
 import kotlinx.android.synthetic.main.test.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.okButton
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 val Context.ctx get() = this
@@ -65,7 +66,7 @@ class Main : AppCompatActivity() {
         grantResults: IntArray
     ) {
         if (grantResults.all { it == PERMISSION_GRANTED }) {
-            setContentView(activity)
+            setContentView(app)
             pager.adapter = adapter
         } else alert {
             isCancelable = false
@@ -94,7 +95,7 @@ class Main : AppCompatActivity() {
             intent.addFlags(FLAG_ACTIVITY_NO_HISTORY or FLAG_ACTIVITY_MULTIPLE_TASK)
             startActivity(intent)
         }
-        R.id.action_donate -> true.also { startBilling() }
+        R.id.action_donate -> true.also { startActivity<Billing>() }
         R.id.action_options -> true.also { Config.show() }
         else -> false
     }

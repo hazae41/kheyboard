@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="fr.rhaz.kheyboard">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="fr.rhaz.kheyboard">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.vending.BILLING"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:usesCleartextTraffic="true"
-            tools:ignore="GoogleAppIndexingWarning"
-            android:fullBackupContent="true">
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
 
         <provider
-                android:name="android.support.v4.content.FileProvider"
-                android:authorities="fr.rhaz.kheyboard.fileprovider"
-                android:grantUriPermissions="true"
-                android:exported="false">
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="fr.rhaz.kheyboard.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
-                    android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/filepaths" />
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".Main"
-                  android:windowSoftInputMode="adjustResize">
+        <activity
+            android:name=".Main"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".Billing">
+
+        </activity>
+
         <service
-                android:name=".Kheyboard"
-                android:label="@string/app_name"
-                android:permission="android.permission.BIND_INPUT_METHOD">
+            android:name=".Kheyboard"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_INPUT_METHOD">
             <meta-data
-                    android:name="android.view.im"
-                    android:resource="@xml/method"/>
+                android:name="android.view.im"
+                android:resource="@xml/method" />
 
             <intent-filter>
-                <action android:name="android.view.InputMethod"/>
+                <action android:name="android.view.InputMethod" />
             </intent-filter>
         </service>
     </application>
