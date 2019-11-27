@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.vending.BILLING" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -20,7 +19,7 @@
 
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="fr.rhaz.kheyboard.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -38,10 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Billing">
-
-        </activity>
+        <activity android:name=".Billing"></activity>
 
         <service
             android:name=".Kheyboard"

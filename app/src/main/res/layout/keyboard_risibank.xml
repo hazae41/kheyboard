@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@android:color/white"
+    android:id="@+id/layout">
+
+    <android.inputmethodservice.KeyboardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/keyboard" />
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        app:srcCompat="@android:color/transparent"
+        android:id="@+id/logo"
+        android:background="@drawable/risibank"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/searchbtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/backspacebtn"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:clipToPadding="false"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:background="@color/light_gray"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/recycler"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:stateListAnimator="@null"
+        android:text="Nouveaux"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/nouveauxbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/populairesbtn"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintTop_toBottomOf="@+id/recycler" />
+
+    <Button
+        android:stateListAnimator="@null"
+        android:text="Populaires"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/populairesbtn"
+        app:layout_constraintStart_toEndOf="@+id/nouveauxbtn"
+        android:background="@android:color/transparent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/favorisbtn"
+        app:layout_constraintTop_toBottomOf="@+id/recycler" />
+
+    <Button
+        android:stateListAnimator="@null"
+        android:text="Aléatoires"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/aleatoiresbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@+id/favorisbtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/recycler" />
+
+    <Button
+        android:stateListAnimator="@null"
+        android:text="Favoris"
+        android:layout_height="wrap_content"
+        android:id="@+id/favorisbtn"
+        app:layout_constraintEnd_toStartOf="@+id/aleatoiresbtn"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@+id/populairesbtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/recycler" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/spacebtn"
+        android:background="@drawable/ic_space_bar"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/backspacebtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/returnbtn"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/searchbtn"
+        android:background="@drawable/ic_search"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/donatebtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/donatebtn"
+        android:background="@drawable/ic_money"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/addbtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/searchbtn"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/backspacebtn"
+        android:background="@drawable/ic_backspace"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/spacebtn"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/returnbtn"
+        android:background="@drawable/ic_keyboard_return"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/spacebtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/addbtn"
+        android:background="@drawable/ic_add"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/donatebtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

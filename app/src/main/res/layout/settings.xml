@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp">
+
+    <Switch
+        android:id="@+id/useUrlsSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Envoyer uniquement des liens"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
+
+    <Switch
+        android:id="@+id/vibrateSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vibrations"
+        android:textSize="16sp" />
+</LinearLayout>

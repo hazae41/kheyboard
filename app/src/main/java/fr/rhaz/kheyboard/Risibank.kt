@@ -1,77 +1,95 @@
 package fr.rhaz.kheyboard
 
-import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.media.MediaPlayer
 import android.view.KeyEvent
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import com.android.volley.Response
+import com.afollestad.recyclical.datasource.emptyDataSourceTyped
+import com.afollestad.recyclical.setup
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.risibank.view.*
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
+import fr.rhaz.kheyboard.utils.*
+import kotlinx.android.synthetic.main.keyboard_azerty.view.*
+import kotlinx.android.synthetic.main.keyboard_risibank.view.*
+import kotlinx.android.synthetic.main.keyboard_risibank.view.backspacebtn
+import kotlinx.android.synthetic.main.keyboard_risibank.view.recycler
+import kotlinx.android.synthetic.main.keyboard_risibank.view.searchbtn
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.json.JSONArray
 import org.json.JSONObject
 
-fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
-
-    val list = list
+fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
 
     var data = JSONObject()
-    fun reload(then: () -> Unit) {
-        val req = JsonObjectRequest("https://risibank.fr/api/v0/load", null,
-            Response.Listener {
-                data = it.getJSONObject("stickers")
-                then()
-            },
-            Response.ErrorListener {
-                it.printStackTrace()
-            }
-        )
-        Volley.newRequestQueue(ctx).add(req)
+    val stickers = emptyDataSourceTyped<String>()
+    lateinit var selectedbtn: Button
+
+    fun request() = deferred<JSONObject> { resolve, reject ->
+        val req = JsonObjectRequest("https://risibank.fr/api/v0/load", null, resolve, reject)
+        Volley.newRequestQueue(this@Risibank).add(req)
+    }
+
+    fun reload() = GlobalScope.launch {
+        try {
+            val res = request().await()
+            data = res.getJSONObject("stickers")
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
     }
 
     val buttons = listOf(nouveauxbtn, populairesbtn, favorisbtn, aleatoiresbtn)
 
-    fun Button.display() {
+    fun display(array: JSONArray) {
+        stickers.clear()
+        stickers.set(array.getStickers())
+        recycler.smoothScrollToPosition(0)
+    }
+
+    fun Button.choose() {
+        println(data.keys().asSequence().toList().toTypedArray())
         when (this) {
-            nouveauxbtn -> list.display(data.getJSONArray("tms"))
-            populairesbtn -> list.display(data.getJSONArray("views"))
-            favorisbtn -> list.display(Config.config.array("favoris"))
-            aleatoiresbtn -> list.display(data.getJSONArray("random"))
+            nouveauxbtn -> display(data.getJSONArray("tms"))
+            populairesbtn -> display(data.getJSONArray("views"))
+            favorisbtn -> display(Config.config.array("favoris"))
+            aleatoiresbtn -> display(data.getJSONArray("random"))
         }
     }
 
-    lateinit var selectedbtn: Button
-    fun Button.unselected() = setBackgroundColor(resources.getColor(android.R.color.transparent))
-    fun Button.selected() {
-        selectedbtn = this
-        setBackgroundColor(resources.getColor(R.color.light_gray))
+    fun Button.unselect() {
+        setBackgroundColor(resources.getColor(android.R.color.transparent))
     }
 
-    fun Button.clicked() {
-        buttons.forEach { it.unselected() }
-        this.selected()
-        this.display()
+    fun Button.select() {
+        selectedbtn = this
+        setBackgroundColor(resources.getColor(R.color.light_gray))
+        choose()
+    }
+
+    fun Button.click() {
+        buttons.forEach { it.unselect() }
+        select()
     }
 
     buttons.forEach { button ->
-        button.setOnClickListener { button.clicked() }
+        button.setOnClickListener { button.click() }
     }
 
-    fun refresh() = reload { selectedbtn.clicked() }
-
     donatebtn.setOnClickListener {
-        startActivity<Billing>()
+        val intent = Intent(this@Risibank, Billing::class.java)
+        intent.flags += FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     logo.setOnClickListener {
-        val man = ctx.applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE)
-        (man as InputMethodManager).showInputMethodPicker()
+        inputMethodManager.showInputMethodPicker()
     }
 
     logo.setOnLongClickListener {
-        MediaPlayer.create(ctx, R.raw.risitas).start()
+        MediaPlayer.create(this@Risibank, R.raw.risitas).start()
         true
     }
 
@@ -86,7 +104,10 @@ fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
         currentInputConnection.commitText(" ", 1)
     }
 
-    searchbtn.setOnClickListener { azerty() }
+    searchbtn.setOnClickListener {
+        setInputView(azerty)
+        azerty.input.requestFocus()
+    }
 
     returnbtn.setOnClickListener {
         sendDownUpKeyEvents(KeyEvent.KEYCODE_ENTER)
@@ -95,22 +116,28 @@ fun Kheyboard.Risibank() = inflate(R.layout.risibank) {
     addbtn.setOnClickListener {
         val clipboard = clipboardManager.primaryClip?.getItemAt(0)
         val url = clipboard?.text?.toString()
-        if (url == null)
+
+        if (url == null) {
             toast("Copiez un lien pour l'ajouter aux favoris")
-        else {
+        } else {
             favorite(url)
-            favorisbtn.clicked()
         }
     }
 
-    list.adapter = StickerAdapter().apply {
-        longClick = { position ->
-            if (selectedbtn == favorisbtn) {
-                unfavorite(selected[position])
-                favorisbtn.display()
-            } else favorite(selected[position])
+    recycler.setup {
+        withDataSource(stickers)
+        withStickers {
+            onLongClick {
+                if (selectedbtn == favorisbtn) {
+                    unfavorite(item)
+                    favorisbtn.choose()
+                } else favorite(item)
+            }
         }
     }
 
-    reload { populairesbtn.clicked() }
+    GlobalScope.launch(Dispatchers.Main) {
+        reload().join()
+        populairesbtn.click()
+    }
 }

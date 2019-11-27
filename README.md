@@ -1,16 +1,12 @@
 ## Kheyboard: clavier Risibank pour Android
 
-##### Cette application ainsi que son auteur ne sont pas affiliés à Risibank, Noelshack ou Jeuxvideo.com
-
-##### Ceci est la source officielle de l'application, veuillez ne pas installer de versions provenant d'autres sources (excepté Google Play)
-
 Vous pouvez enfin envoyer vos stickers préférés sur JVC ou à vos contacts sans avoir à copier coller des liens farfelus ou à installer de navigateur spécial 🔥
 
 [![](https://i.imgur.com/9nKVtxf.png)](https://play.google.com/store/apps/details?id=fr.rhaz.kheyboard)
 
-[Télécharger l'APK directement](https://github.com/RHazDev/Kheyboard/raw/master/apk/kheyboard-1.4.2.apk)
+[Télécharger l'APK directement](https://github.com/RHazDev/Kheyboard/raw/master/apk/kheyboard-2.0.apk)
 
-Version minimale: Android KitKat (4.4) 
+Version minimale: Android Lollipop (5.0)
 
 ### Capture d'écran
 [![](https://i.imgur.com/YHQRtU0.png)](https://i.imgur.com/3AddqGq.jpg)
@@ -38,9 +34,9 @@ Vous pouvez aussi copier un lien au préalable et appuyer sur le bouton "+" pour
 Les stickers actuels ne vous interessent pas ? Aucun problème, vous avez juste à appuyer sur le bouton approprié pour rafraîchir les nouveaux stickers et les stickers aléatoires
 
 #### Compatibilité
-L'application peut être installée sur tous les appareils Android à partir de la version 4.4, cela représente environ 95% des appareils Android, donc vous n'avez pas d'excuse 🦄
+L'application peut être installée sur tous les appareils Android à partir de la version 5.0, cela représente environ 95% des appareils Android, donc vous n'avez pas d'excuse 🦄
 
 #### Avant-gardiste
-L'application est codée en Kotlin, le nouveau langage officiel d'Android, et utilise le SDK 28, ce qui correspond à la dernière version Android en date (Pie 9.0)
+L'application est codée en Kotlin et utilise le SDK 29, ce qui correspond à Android 10
 
 Ces deux atouts font que l'application a pu être développée dans de bonnes conditions et qu'aucun octet n'a été maltraité durant sa compilation 🌈

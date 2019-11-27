@@ -1,21 +1,19 @@
 package fr.rhaz.kheyboard
 
 import android.content.Context
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.checkBox
-import org.jetbrains.anko.customView
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.padding
-import org.jetbrains.anko.verticalLayout
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
+import kotlinx.android.synthetic.main.settings.view.*
 import org.json.JSONObject
 import java.io.File
 
-val Context.Config get() = Config(ctx)
+val Context.Config get() = Config(this)
 
 class Config(val ctx: Context) {
-    val settings get() = File(ctx.getExternalFilesDir(null)!!, "settings.json")
+    val settings get() = File(ctx.getExternalFilesDir(null), "settings.json")
     val config get() = if (settings.exists()) JSONObject(settings.readText()) else JSONObject()
- 
+
     fun json(action: JSONObject.() -> JSONObject) {
         val settings = settings
         val result = config.run(action)
@@ -35,26 +33,24 @@ class Config(val ctx: Context) {
             else getBoolean("vibrations")
         }
 
-    fun show() = ctx.alert {
-        title = "Configuration"
-        customView {
-            verticalLayout {
-                padding = dip(16)
-                checkBox("Toujours utiliser les URL") {
+    fun openSettings() {
+        MaterialDialog(ctx).show {
+            title(text = "Options")
+            customView(R.layout.settings)
+            getCustomView().apply {
+                useUrlsSwitch.apply {
                     isChecked = useUrls
                     setOnClickListener {
                         json { put("use-urls", isChecked) }
                     }
                 }
-                checkBox("Désactiver les vibrations") {
-                    isChecked = !vibrations
+                vibrateSwitch.apply {
+                    isChecked = vibrations
                     setOnClickListener {
-                        json { put("vibrations", !isChecked) }
+                        json { put("vibrations", isChecked) }
                     }
                 }
             }
         }
-        positiveButton("Fermer") {}
-        show()
     }
 }

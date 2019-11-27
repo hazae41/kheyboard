@@ -1,165 +1,165 @@
 package fr.rhaz.kheyboard
 
 import android.content.ClipDescription
-import android.content.ClipboardManager
 import android.content.Context
 import android.inputmethodservice.InputMethodService
 import android.os.Build
-import android.support.v13.view.inputmethod.EditorInfoCompat
-import android.support.v13.view.inputmethod.InputConnectionCompat
-import android.support.v13.view.inputmethod.InputContentInfoCompat
-import android.support.v4.content.FileProvider
-import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.ImageButton
-import android.widget.ImageView
+import androidx.core.content.FileProvider
+import androidx.core.view.inputmethod.EditorInfoCompat
+import androidx.core.view.inputmethod.InputConnectionCompat
+import androidx.core.view.inputmethod.InputContentInfoCompat
+import com.afollestad.recyclical.ItemDefinition
+import com.afollestad.recyclical.RecyclicalSetup
+import com.afollestad.recyclical.ViewHolder
+import com.afollestad.recyclical.withItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.longToast
-import org.jetbrains.anko.toast
-import org.jetbrains.anko.vibrator
+import fr.rhaz.kheyboard.utils.array
+import fr.rhaz.kheyboard.utils.deferred
+import fr.rhaz.kheyboard.utils.toast
+import fr.rhaz.kheyboard.utils.vibrator
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.io.IOException
 
-val Context.clipboardManager: ClipboardManager
-    get() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+class StickerViewHolder(itemView: View) : ViewHolder(itemView) {
+    val image = itemView as ImageButton
+}
 
 class Kheyboard : InputMethodService() {
 
-    fun inflate(id: Int, builder: View.() -> Unit = {}) =
-        layoutInflater.inflate(id, null).apply(builder)
+    lateinit var azerty: View
+    lateinit var risibank: View
 
-    fun risibank() {
-        setInputView(Risibank())
+    override fun onCreateInputView(): View {
+        azerty = Azerty()
+        risibank = Risibank()
+
+        return risibank
     }
 
-    fun azerty() {
-        setInputView(Azerty())
+    fun JSONArray.getStickers(): List<String> {
+        return (0 until length()).map {
+            getJSONObject(it).getString("risibank_link")
+        }
     }
-
-    override fun onCreateInputView() = Risibank()
-
-    fun JSONObject.array(name: String) =
-        if (name in keys().asSequence())
-            getJSONArray(name)
-        else JSONArray()
 
     fun favorite(url: String) {
-        if (!URLUtil.isValidUrl(url)) toast("URL invalide")
-        else Config.json {
-            put(
-                "favoris", array("favoris").put(
-                    JSONObject().put("risibank_link", url)
-                )
-            )
+        if (!URLUtil.isValidUrl(url)) {
+            toast("URL invalide")
+            return
         }
-        longToast("Ajouté $url")
-    }
 
-    fun unfavorite(url: String?) {
-        if (url == null) return
-        if (!URLUtil.isValidUrl(url)) return
         Config.json {
-            val favs = array("favoris")
-            for (i in 0..favs.length()) {
-                val it = favs.getJSONObject(i)
-                if (url == it.getString("risibank_link")) {
-                    favs.remove(i)
-                    break
-                }
-            }
-            put("favoris", favs)
-        }
-        longToast("Supprimé $url")
-    }
-
-    val selected = mutableListOf<String>()
-
-    fun select(stickers: JSONArray) {
-        selected.clear()
-        for (i in 0 until stickers.length())
-            selected += stickers.getJSONObject(i).getString("risibank_link")
-    }
-
-    fun RecyclerView.display(stickers: JSONArray) {
-        select(stickers)
-        smoothScrollToPosition(0)
-        adapter?.notifyDataSetChanged()
-    }
-
-    class Sticker(val data: ImageButton) : RecyclerView.ViewHolder(data)
-
-    inner class StickerAdapter : RecyclerView.Adapter<Sticker>() {
-        var longClick: (Int) -> Unit = { position -> }
-
-        override fun getItemCount() = selected.size
-        override fun onCreateViewHolder(group: ViewGroup, position: Int): Sticker {
-            return ImageButton(ctx).run {
-                setBackgroundColor(resources.getColor(android.R.color.transparent))
-                scaleType = ImageView.ScaleType.FIT_CENTER
-                layoutParams = ViewGroup.LayoutParams(dip(130), dip(130))
-                Sticker(this)
-            }
+            val favoris = array("favoris")
+            val sticker = JSONObject().put("risibank_link", url)
+            favoris.put(sticker)
+            put("favoris", favoris)
         }
 
-        fun commitImage(url: String) =
-            Glide.with(ctx).download(url).listener(object : RequestListener<File> {
-                override fun onLoadFailed(
-                    e: GlideException?, model: Any?, target: Target<File>?, isFirstResource: Boolean
-                ) = false
+        toast("Ajouté aux favoris")
+        if (Config.vibrations) vibrator.vibrate(100)
+    }
 
-                override fun onResourceReady(
-                    resource: File, model: Any?,
-                    target: Target<File>?, dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ) = false.also {
-                    val file = File(ctx.getExternalFilesDir(null)!!, "stickers/sticker.gif")
-                    resource.copyTo(file, true)
-                    commitImage(file)
-                }
-            }).submit()
+    fun unfavorite(url: String) {
+        if (!URLUtil.isValidUrl(url)) return
 
-        fun commitImage(file: File) {
-            val uri = FileProvider.getUriForFile(ctx, "fr.rhaz.kheyboard.fileprovider", file)
-            val clip = ClipDescription("Sticker", arrayOf("image/gif"))
-            val inputContentInfo = InputContentInfoCompat(uri, clip, null)
-            val inputConnection = currentInputConnection
-            val editorInfo = currentInputEditorInfo
-            var flags = 0
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-                flags = flags or InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
+        Config.json {
+            val favoris = array("favoris")
+
+            favoris.getStickers().forEachIndexed { i, it ->
+                if (url == it) favoris.remove(i)
             }
-            InputConnectionCompat.commitContent(
+
+            put("favoris", favoris)
+        }
+
+        toast("Supprimé des favoris")
+        if (Config.vibrations) vibrator.vibrate(100)
+    }
+
+    fun RecyclicalSetup.withStickers(block: ItemDefinition<String, StickerViewHolder>.() -> Unit) {
+        withItem<String, StickerViewHolder>(R.layout.keyboard_sticker) {
+            onBind(::StickerViewHolder) { _, item ->
+                Glide.with(this@Kheyboard).load(item).into(image)
+            }
+            onClick {
+                val types = EditorInfoCompat.getContentMimeTypes(currentInputEditorInfo)
+                val gifSupport = types.any {
+                    ClipDescription.compareMimeTypes(it, "image/gif")
+                }
+                if (gifSupport && !Config.useUrls) commitImage(item)
+                else currentInputConnection.commitText(item, 1)
+                if (Config.vibrations) vibrator.vibrate(100)
+            }
+            block()
+        }
+    }
+
+    fun commitImage(url: String) = GlobalScope.launch {
+        try {
+            val resource = download(url).await()
+            val file = File(getExternalFilesDir(null), "stickers/sticker.gif")
+            resource.copyTo(file, true)
+            commitImage(file)
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+    }
+
+    fun commitImage(file: File) {
+        val uri = FileProvider.getUriForFile(this, "fr.rhaz.kheyboard.fileprovider", file)
+        val clip = ClipDescription("Sticker", arrayOf("image/gif"))
+
+        val inputContentInfo = InputContentInfoCompat(uri, clip, null)
+        val inputConnection = currentInputConnection
+        val editorInfo = currentInputEditorInfo
+
+        val flags = run {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) 0
+            else InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
+        }
+
+        InputConnectionCompat.commitContent(
                 inputConnection,
                 editorInfo,
                 inputContentInfo,
                 flags,
                 null
-            )
+        )
+    }
+}
+
+fun Context.download(url: String) = deferred<File> { resolve, reject ->
+    val req = object : RequestListener<File> {
+        override fun onLoadFailed(
+                e: GlideException?, model: Any?, target: Target<File>?, isFirstResource: Boolean
+        ): Boolean {
+            if (e != null) reject(e)
+            else reject(IOException("Error"))
+            return false
         }
 
-        override fun onBindViewHolder(holder: Sticker, position: Int) {
-            Glide.with(ctx).load(selected[position]).into(holder.data)
-            holder.data.setOnClickListener {
-                val types = EditorInfoCompat.getContentMimeTypes(currentInputEditorInfo)
-                val gifSupport = types.any {
-                    ClipDescription.compareMimeTypes(it, "image/gif")
-                }
-                if (gifSupport && !Config.useUrls) commitImage(selected[position])
-                else currentInputConnection.commitText(selected[position], 1)
-                if (Config.vibrations) vibrator.vibrate(100)
-            }
-            holder.data.setOnLongClickListener {
-                longClick(position)
-                true
-            }
+        override fun onResourceReady(
+                resource: File,
+                model: Any?,
+                target: Target<File>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+        ): Boolean {
+            resolve(resource)
+            return false
         }
     }
+    Glide.with(this).download(url).listener(req).submit()
 }
