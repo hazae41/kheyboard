@@ -6,7 +6,7 @@ import android.inputmethodservice.InputMethodService
 import android.os.Build
 import android.view.View
 import android.webkit.URLUtil
-import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.core.content.FileProvider
 import androidx.core.view.inputmethod.EditorInfoCompat
 import androidx.core.view.inputmethod.InputConnectionCompat
@@ -33,7 +33,7 @@ import java.io.IOException
 
 
 class StickerViewHolder(itemView: View) : ViewHolder(itemView) {
-    val image = itemView as ImageButton
+    val image = itemView.findViewById<ImageView>(R.id.image)
 }
 
 class Kheyboard : InputMethodService() {

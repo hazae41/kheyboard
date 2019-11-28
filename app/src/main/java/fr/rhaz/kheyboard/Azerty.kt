@@ -6,10 +6,10 @@ import com.afollestad.recyclical.setup
 import com.android.volley.Request.Method.POST
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import fr.rhaz.kheyboard.utils.array
 import fr.rhaz.kheyboard.utils.deferred
 import fr.rhaz.kheyboard.utils.inflate
 import fr.rhaz.kheyboard.utils.inputMethodManager
-import fr.rhaz.kheyboard.utils.vibrator
 import kotlinx.android.synthetic.main.keyboard_azerty.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -25,6 +25,7 @@ fun Kheyboard.Azerty() = layoutInflater.inflate(R.layout.keyboard_azerty) {
         withStickers {
             onLongClick {
                 favorite(item)
+                vibrate()
             }
         }
     }
@@ -43,7 +44,7 @@ fun Kheyboard.Azerty() = layoutInflater.inflate(R.layout.keyboard_azerty) {
 
         GlobalScope.launch(Dispatchers.Main) {
             val res = request(input.text).await()
-            val array = res.getJSONArray("stickers")
+            val array = res.array("stickers")
             stickers.set(array.getStickers())
             recycler.smoothScrollToPosition(0)
         }
@@ -57,31 +58,35 @@ fun Kheyboard.Azerty() = layoutInflater.inflate(R.layout.keyboard_azerty) {
         } else {
             input.text.delete(input.selectionEnd - 1, input.selectionEnd)
         }
-        
-        if (Config.vibrations) vibrator.vibrate(100)
+
+        vibrate()
     }
 
     deletebtn.setOnClickListener {
         input.text.clear()
+        vibrate()
     }
 
     searchbtn.setOnClickListener {
         search()
+        vibrate()
     }
 
     risibankbtn.setOnClickListener {
         setInputView(risibank)
+        vibrate()
     }
 
     spacebar.setOnLongClickListener {
         inputMethodManager.showInputMethodPicker()
+        vibrate()
         true
     }
 
     fun Map.Entry<View, String>.assign() {
         key.setOnClickListener {
             input.text.insert(input.selectionEnd, value)
-            if (Config.vibrations) vibrator.vibrate(100)
+            vibrate()
         }
     }
 

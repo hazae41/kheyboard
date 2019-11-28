@@ -46,10 +46,10 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
 
     fun display(button: Button) {
         val array = when (button) {
-            nouveauxbtn -> data.getJSONArray("tms")
-            populairesbtn -> data.getJSONArray("views")
+            nouveauxbtn -> data.array("tms")
+            populairesbtn -> data.array("views")
             favorisbtn -> Config.config.array("favoris")
-            aleatoiresbtn -> data.getJSONArray("random")
+            aleatoiresbtn -> data.array("random")
             else -> return
         }
         stickers.clear()
@@ -60,13 +60,13 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
     fun update(button: Button) {
         if (button != selected) {
             button.setBackgroundColor(resources.getColor(android.R.color.transparent))
+            button.setTextColor(resources.getColor(android.R.color.white))
         } else {
-            button.setBackgroundColor(resources.getColor(R.color.light_gray))
+            button.setBackground(getDrawable(R.drawable.shape_button))
         }
     }
 
     fun updateTip() {
-        println(stickers.isEmpty())
         favoris_tip.visibility = when (selected == favorisbtn && stickers.isEmpty()) {
             true -> VISIBLE
             false -> GONE
@@ -154,8 +154,10 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
         }
     }
 
+    select(populairesbtn)
+
     GlobalScope.launch(Dispatchers.Main) {
         reload().join()
-        select(populairesbtn)
+        display(selected)
     }
 }

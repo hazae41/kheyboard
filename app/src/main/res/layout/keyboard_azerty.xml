@@ -1,408 +1,466 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/laout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/laout"
-    android:background="@android:color/white">
+    android:background="@color/dark">
 
     <TextView
-        android:text="A"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreA"
-        android:textSize="30sp"
-        android:textAlignment="center"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="A"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreZ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toStartOf="@+id/lettreZ"
-        android:layout_marginStart="16dp"
-        app:layout_constraintHorizontal_chainStyle="spread_inside" />
-
-    <TextView
-        android:text="Z"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreZ"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreE"
-        app:layout_constraintStart_toEndOf="@+id/lettreA"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreE" />
-
-    <TextView
-        android:text="E"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreE"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreR"
-        app:layout_constraintStart_toEndOf="@+id/lettreZ"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreR" />
-
-    <TextView
-        android:text="R"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreR"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreT"
-        app:layout_constraintStart_toEndOf="@+id/lettreE"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreT" />
-
-    <TextView
-        android:text="T"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreT"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreY"
-        app:layout_constraintStart_toEndOf="@+id/lettreR"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreY" />
-
-    <TextView
-        android:text="Y"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreY"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreU"
-        app:layout_constraintStart_toEndOf="@+id/lettreT"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreU" />
-
-    <TextView
-        android:text="U"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreU"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreI"
-        app:layout_constraintStart_toEndOf="@+id/lettreY"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreI" />
-
-    <TextView
-        android:text="I"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreI"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreO"
-        app:layout_constraintStart_toEndOf="@+id/lettreU"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreO" />
-
-    <TextView
-        android:text="P"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreP"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/lettreM"
-        app:layout_constraintStart_toEndOf="@+id/lettreO"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp" />
-
-    <TextView
-        android:text="O"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreO"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreP"
-        app:layout_constraintStart_toEndOf="@+id/lettreI"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreP" />
-
-    <TextView
-        android:text="Q"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
-        android:id="@+id/lettreQ"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreS"
-        android:layout_marginStart="16dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreS" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:text="S"
-        android:layout_width="30dp"
+        android:id="@+id/lettreZ"
+        android:layout_width="35dp"
         android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="Z"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreE"
+        app:layout_constraintEnd_toStartOf="@+id/lettreE"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreA" />
+
+    <TextView
+        android:id="@+id/lettreE"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="E"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreR"
+        app:layout_constraintEnd_toStartOf="@+id/lettreR"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreZ" />
+
+    <TextView
+        android:id="@+id/lettreR"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="R"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreT"
+        app:layout_constraintEnd_toStartOf="@+id/lettreT"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreE" />
+
+    <TextView
+        android:id="@+id/lettreT"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="T"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreY"
+        app:layout_constraintEnd_toStartOf="@+id/lettreY"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreR" />
+
+    <TextView
+        android:id="@+id/lettreY"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="Y"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreU"
+        app:layout_constraintEnd_toStartOf="@+id/lettreU"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreT" />
+
+    <TextView
+        android:id="@+id/lettreU"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="U"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreI"
+        app:layout_constraintEnd_toStartOf="@+id/lettreI"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreY" />
+
+    <TextView
+        android:id="@+id/lettreI"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="I"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreO"
+        app:layout_constraintEnd_toStartOf="@+id/lettreO"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreU" />
+
+    <TextView
+        android:id="@+id/lettreP"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="P"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toTopOf="@+id/lettreM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreO" />
+
+    <TextView
+        android:id="@+id/lettreO"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="O"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreP"
+        app:layout_constraintEnd_toStartOf="@+id/lettreP"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreI" />
+
+    <TextView
+        android:id="@+id/lettreQ"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="Q"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreS"
+        app:layout_constraintEnd_toStartOf="@+id/lettreS"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/lettreS"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreQ"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreD"
         app:layout_constraintEnd_toStartOf="@+id/lettreD"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreD" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreQ" />
 
     <TextView
-        android:text="J"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreJ"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreH"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="J"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreK"
         app:layout_constraintEnd_toStartOf="@+id/lettreK"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreK" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreH" />
 
     <TextView
-        android:text="H"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreH"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreG"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="H"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreJ"
         app:layout_constraintEnd_toStartOf="@+id/lettreJ"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreJ" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreG" />
 
     <TextView
-        android:text="G"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreG"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreF"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="G"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreH"
         app:layout_constraintEnd_toStartOf="@+id/lettreH"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreH" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreF" />
 
     <TextView
-        android:text="F"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreF"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreD"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreG"
         app:layout_constraintEnd_toStartOf="@+id/lettreG"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreG" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreD" />
 
     <TextView
-        android:text="D"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreD"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreS"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="D"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreF"
         app:layout_constraintEnd_toStartOf="@+id/lettreF"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreF" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreS" />
 
     <TextView
-        android:text="K"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreK"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreJ"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="K"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreL"
         app:layout_constraintEnd_toStartOf="@+id/lettreL"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreL" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreJ" />
 
     <TextView
-        android:text="L"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreL"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreK"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="L"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreM"
         app:layout_constraintEnd_toStartOf="@+id/lettreM"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreM" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreK" />
 
     <Button
+        android:id="@+id/spacebar"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:id="@+id/spacebar"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/risibankbtn"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/shape_button"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/searchbtn"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintStart_toEndOf="@+id/risibankbtn" />
 
     <ImageView
+        android:id="@+id/deletebtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/deletebtn"
-        android:background="@drawable/ic_close"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_close"
         app:layout_constraintBottom_toBottomOf="@+id/input"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/input" />
 
     <ImageView
+        android:id="@+id/backspacebtn"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:id="@+id/backspacebtn"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/ic_backspace"
-        app:layout_constraintStart_toEndOf="@+id/lettreN"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/searchbtn"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/searchbtn" />
+        app:layout_constraintStart_toEndOf="@+id/lettreN" />
 
     <TextView
-        android:text="N"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreN"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreB"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="N"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/backspacebtn"
         app:layout_constraintEnd_toStartOf="@+id/backspacebtn"
-        app:layout_constraintBottom_toBottomOf="@+id/backspacebtn" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreB" />
 
     <TextView
-        android:text="B"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreB"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreV"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="B"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreN"
         app:layout_constraintEnd_toStartOf="@+id/lettreN"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreN" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreV" />
 
     <TextView
-        android:text="V"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreV"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreC"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="V"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreB"
         app:layout_constraintEnd_toStartOf="@+id/lettreB"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreB" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreC" />
 
     <TextView
-        android:text="C"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreC"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreX"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="C"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreV"
         app:layout_constraintEnd_toStartOf="@+id/lettreV"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreV" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreX" />
 
     <TextView
-        android:text="X"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreX"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreW"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="X"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreC"
         app:layout_constraintEnd_toStartOf="@+id/lettreC"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreC" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreW" />
 
     <TextView
-        android:text="W"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreW"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toStartOf="@+id/lettreX"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="W"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreX"
+        app:layout_constraintEnd_toStartOf="@+id/lettreX"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreX" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:text="M"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
         android:id="@+id/lettreM"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/lettreL"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/backspacebtn" />
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="M"
+        android:textColor="@android:color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toTopOf="@+id/backspacebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreL" />
 
     <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:id="@+id/input"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:inputType="text"
-        android:singleLine="true"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/lettreP"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/deletebtn" />
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shape_button"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/lettreP"
+        app:layout_constraintEnd_toStartOf="@+id/deletebtn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/risibankbtn"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:id="@+id/risibankbtn"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/risibank_icon"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false"
         android:orientation="horizontal"
-        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/deletebtn"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/recycler" />
+        app:layout_constraintBottom_toTopOf="@+id/input" />
 
     <ImageView
+        android:id="@+id/searchbtn"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:id="@+id/searchbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/ic_search_full" />
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/ic_search_full"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
