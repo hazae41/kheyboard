@@ -2,4 +2,10 @@
     <string name="app_name">Kheyboard</string>
     <string name="app_licence">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsVdMw5anA5Vr0fLmNy6nQcaMuAi8yIwbcv/Ap453ysGHCj1afN2xi4YX+taeYTZy/hsaJRHExSUTyn3kSXmYKOHjKBkrKtLIBkQiyAsEr012boJUVSe354ZI65QJTIOIhIGzS6SE1sarZ6OSUE/BoGc8xTxSbXtvjsTLub8usrzeZzGczXeJFJVsZPGl59+mY+qMwMJsSTr8SjyIyEzIvCZ1VVGxsYQEaU9mS47ZJ3fdrvKx/6aW4/JT3xMQNxQ1plT67Xby11yUZ/MLOxAevkJzPtw/VKNuvCsPlreRZSC5M52/T+j4UQXrgk3QewCazRzhMgtleZ7CzTm6HwsU0QIDAQAB</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="keyboard_risibank_aleatoires">Aléatoires</string>
+    <string name="keyboard_risibank_populaires">Populaires</string>
+    <string name="keyboard_risibank_nouveaux">Nouveaux</string>
+    <string name="keyboard_risibank_favoris">Favoris</string>
+    <string name="keyboard_risibank_favoris_tip">Ajoutez un sticker aux favoris en restant appuyé dessus</string>
+    <string name="keyboard_risibank_space">espace</string>
 </resources>

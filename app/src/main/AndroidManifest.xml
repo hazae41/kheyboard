@@ -33,11 +33,11 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Billing"></activity>
+
+        <activity android:name=".Billing" />
 
         <service
             android:name=".Kheyboard"
@@ -46,7 +46,6 @@
             <meta-data
                 android:name="android.view.im"
                 android:resource="@xml/method" />
-
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>

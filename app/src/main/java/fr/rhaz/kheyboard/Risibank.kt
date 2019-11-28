@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.media.MediaPlayer
 import android.view.KeyEvent
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Button
 import com.afollestad.recyclical.datasource.emptyDataSourceTyped
 import com.afollestad.recyclical.setup
@@ -18,14 +20,13 @@ import kotlinx.android.synthetic.main.keyboard_risibank.view.searchbtn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 import org.json.JSONObject
 
 fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
 
     var data = JSONObject()
     val stickers = emptyDataSourceTyped<String>()
-    lateinit var selectedbtn: Button
+    lateinit var selected: Button
 
     fun request() = deferred<JSONObject> { resolve, reject ->
         val req = JsonObjectRequest("https://risibank.fr/api/v0/load", null, resolve, reject)
@@ -43,53 +44,64 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
 
     val buttons = listOf(nouveauxbtn, populairesbtn, favorisbtn, aleatoiresbtn)
 
-    fun display(array: JSONArray) {
+    fun display(button: Button) {
+        val array = when (button) {
+            nouveauxbtn -> data.getJSONArray("tms")
+            populairesbtn -> data.getJSONArray("views")
+            favorisbtn -> Config.config.array("favoris")
+            aleatoiresbtn -> data.getJSONArray("random")
+            else -> return
+        }
         stickers.clear()
         stickers.set(array.getStickers())
         recycler.smoothScrollToPosition(0)
     }
 
-    fun Button.choose() {
-        println(data.keys().asSequence().toList().toTypedArray())
-        when (this) {
-            nouveauxbtn -> display(data.getJSONArray("tms"))
-            populairesbtn -> display(data.getJSONArray("views"))
-            favorisbtn -> display(Config.config.array("favoris"))
-            aleatoiresbtn -> display(data.getJSONArray("random"))
+    fun update(button: Button) {
+        if (button != selected) {
+            button.setBackgroundColor(resources.getColor(android.R.color.transparent))
+        } else {
+            button.setBackgroundColor(resources.getColor(R.color.light_gray))
         }
     }
 
-    fun Button.unselect() {
-        setBackgroundColor(resources.getColor(android.R.color.transparent))
+    fun updateTip() {
+        println(stickers.isEmpty())
+        favoris_tip.visibility = when (selected == favorisbtn && stickers.isEmpty()) {
+            true -> VISIBLE
+            false -> GONE
+        }
     }
 
-    fun Button.select() {
-        selectedbtn = this
-        setBackgroundColor(resources.getColor(R.color.light_gray))
-        choose()
-    }
-
-    fun Button.click() {
-        buttons.forEach { it.unselect() }
-        select()
+    fun select(button: Button) {
+        selected = button
+        display(button)
+        buttons.forEach { update(it) }
     }
 
     buttons.forEach { button ->
-        button.setOnClickListener { button.click() }
+        button.setOnClickListener {
+            select(button)
+            updateTip()
+            vibrate()
+        }
     }
 
     donatebtn.setOnClickListener {
         val intent = Intent(this@Risibank, Billing::class.java)
         intent.flags += FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
+        vibrate()
     }
 
     logo.setOnClickListener {
         inputMethodManager.showInputMethodPicker()
+        vibrate()
     }
 
     logo.setOnLongClickListener {
         MediaPlayer.create(this@Risibank, R.raw.risitas).start()
+        vibrate()
         true
     }
 
@@ -98,19 +110,23 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
         if (selectedText == null || selectedText.isEmpty())
             currentInputConnection.deleteSurroundingText(1, 0)
         else currentInputConnection.commitText("", 1)
+        vibrate()
     }
 
     spacebtn.setOnClickListener {
         currentInputConnection.commitText(" ", 1)
+        vibrate()
     }
 
     searchbtn.setOnClickListener {
         setInputView(azerty)
         azerty.input.requestFocus()
+        vibrate()
     }
 
     returnbtn.setOnClickListener {
         sendDownUpKeyEvents(KeyEvent.KEYCODE_ENTER)
+        vibrate()
     }
 
     addbtn.setOnClickListener {
@@ -128,16 +144,18 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
         withDataSource(stickers)
         withStickers {
             onLongClick {
-                if (selectedbtn == favorisbtn) {
+                if (selected == favorisbtn) {
                     unfavorite(item)
-                    favorisbtn.choose()
+                    display(selected)
+                    updateTip()
                 } else favorite(item)
+                vibrate()
             }
         }
     }
 
     GlobalScope.launch(Dispatchers.Main) {
         reload().join()
-        populairesbtn.click()
+        select(populairesbtn)
     }
 }

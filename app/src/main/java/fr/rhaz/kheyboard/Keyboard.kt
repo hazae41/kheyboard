@@ -54,6 +54,10 @@ class Kheyboard : InputMethodService() {
         }
     }
 
+    fun vibrate() {
+        if (Config.vibrations) vibrator.vibrate(100)
+    }
+
     fun favorite(url: String) {
         if (!URLUtil.isValidUrl(url)) {
             toast("URL invalide")
@@ -68,7 +72,6 @@ class Kheyboard : InputMethodService() {
         }
 
         toast("Ajouté aux favoris")
-        if (Config.vibrations) vibrator.vibrate(100)
     }
 
     fun unfavorite(url: String) {
@@ -85,7 +88,6 @@ class Kheyboard : InputMethodService() {
         }
 
         toast("Supprimé des favoris")
-        if (Config.vibrations) vibrator.vibrate(100)
     }
 
     fun RecyclicalSetup.withStickers(block: ItemDefinition<String, StickerViewHolder>.() -> Unit) {
