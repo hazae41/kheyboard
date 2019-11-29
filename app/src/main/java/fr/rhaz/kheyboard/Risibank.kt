@@ -36,9 +36,12 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
     fun reload() = GlobalScope.launch {
         try {
             val res = request().await()
+            error_tip.visibility = GONE
             data = res.getJSONObject("stickers")
         } catch (ex: Exception) {
             ex.printStackTrace()
+            stickers.clear()
+            error_tip.visibility = VISIBLE
         }
     }
 
@@ -62,7 +65,7 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
             button.setBackgroundColor(resources.getColor(android.R.color.transparent))
             button.setTextColor(resources.getColor(android.R.color.white))
         } else {
-            button.setBackground(getDrawable(R.drawable.shape_button))
+            button.background = getDrawable(R.drawable.shape_button)
         }
     }
 
