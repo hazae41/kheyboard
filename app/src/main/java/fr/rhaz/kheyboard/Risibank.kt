@@ -19,12 +19,15 @@ import kotlinx.android.synthetic.main.keyboard_risibank.view.recycler
 import kotlinx.android.synthetic.main.keyboard_risibank.view.searchbtn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
 
     var data = JSONObject()
+    var error = false
+    var loading = true
     val stickers = emptyDataSourceTyped<String>()
     lateinit var selected: Button
 
@@ -33,22 +36,34 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
         Volley.newRequestQueue(this@Risibank).add(req)
     }
 
-    fun reload() = GlobalScope.launch {
-        try {
-            val res = request().await()
-            error_tip.visibility = GONE
-            data = res.getJSONObject("stickers")
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-            stickers.clear()
-            error_tip.visibility = VISIBLE
+    val buttons = listOf(nouveauxbtn, populairesbtn, favorisbtn, aleatoiresbtn)
+
+    fun updateTips() {
+        when (selected) {
+            favorisbtn -> {
+                error_msg.visibility = GONE
+                loading_bar.visibility = GONE
+                favoris_tip.visibility = when (stickers.isEmpty()) {
+                    true -> VISIBLE
+                    false -> GONE
+                }
+            }
+            else -> {
+                favoris_tip.visibility = GONE
+                error_msg.visibility = when (error) {
+                    true -> VISIBLE
+                    false -> GONE
+                }
+                loading_bar.visibility = when (loading) {
+                    true -> VISIBLE
+                    false -> GONE
+                }
+            }
         }
     }
 
-    val buttons = listOf(nouveauxbtn, populairesbtn, favorisbtn, aleatoiresbtn)
-
-    fun display(button: Button) {
-        val array = when (button) {
+    fun refresh() {
+        val array = when (selected) {
             nouveauxbtn -> data.array("tms")
             populairesbtn -> data.array("views")
             favorisbtn -> Config.config.array("favoris")
@@ -58,6 +73,7 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
         stickers.clear()
         stickers.set(array.getStickers())
         recycler.smoothScrollToPosition(0)
+        updateTips()
     }
 
     fun update(button: Button) {
@@ -69,23 +85,15 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
         }
     }
 
-    fun updateTip() {
-        favoris_tip.visibility = when (selected == favorisbtn && stickers.isEmpty()) {
-            true -> VISIBLE
-            false -> GONE
-        }
-    }
-
     fun select(button: Button) {
         selected = button
-        display(button)
+        refresh()
         buttons.forEach { update(it) }
     }
 
     buttons.forEach { button ->
         button.setOnClickListener {
             select(button)
-            updateTip()
             vibrate()
         }
     }
@@ -149,18 +157,33 @@ fun Kheyboard.Risibank() = layoutInflater.inflate(R.layout.keyboard_risibank) {
             onLongClick {
                 if (selected == favorisbtn) {
                     unfavorite(item)
-                    display(selected)
-                    updateTip()
+                    refresh()
                 } else favorite(item)
                 vibrate()
             }
         }
     }
 
+    suspend fun reload() {
+        try {
+            val res = request().await()
+            data = res.getJSONObject("stickers")
+            loading = false
+            error = false
+            refresh()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            loading = false
+            error = true
+            updateTips()
+            delay(1000)
+            reload()
+        }
+    }
+
     select(populairesbtn)
 
     GlobalScope.launch(Dispatchers.Main) {
-        reload().join()
-        display(selected)
+        reload()
     }
 }

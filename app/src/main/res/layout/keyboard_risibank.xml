@@ -45,10 +45,10 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
-        android:id="@+id/error_tip"
+        android:id="@+id/favoris_tip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Impossible de se connecter"
+        android:text="@string/keyboard_risibank_favoris_tip"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
@@ -59,14 +59,25 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
-        android:id="@+id/favoris_tip"
+        android:id="@+id/error_msg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/keyboard_risibank_favoris_tip"
+        android:text="Impossible de se connecter, essayez de désactiver l'économiseur de batterie"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <ProgressBar
+        android:id="@+id/loading_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
