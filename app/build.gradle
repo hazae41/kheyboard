@@ -8,7 +8,7 @@ android {
         applicationId "fr.rhaz.kheyboard"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 8
+        versionCode 20
         versionName "2.0"
         testInstrumentationRunner "androidx.app_test.runner.AndroidJUnitRunner"
     }

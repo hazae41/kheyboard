@@ -8,16 +8,14 @@ Vous pouvez enfin envoyer vos stickers préférés sur JVC ou à vos contacts sa
 
 Version minimale: Android Lollipop (5.0)
 
-### Capture d'écran
-[![](https://i.imgur.com/YHQRtU0.png)](https://i.imgur.com/3AddqGq.jpg)
+### Captures d'écran
+[![](https://i.imgur.com/nVcpNWy.png)](https://i.imgur.com/nVcpNWy.png)
+[![](https://i.imgur.com/xCUzSst.png)](https://i.imgur.com/xCUzSst.png)
 
 ### Fonctionnalités
 
 #### S'intègre à n'importe quelle application
 Vous pouvez utiliser cette application n'importe où du moment que vous avez un texte à éditer
-
-#### Design propre
-Le design a été soigné pour qu'il soit le plus simple, intemporel et propre possible
 
 #### Performances correctes
 Les images se chargent au fur et à mesure que vous les faites défiler, assurant de bonnes performances sur n'importe quel appareil
@@ -29,14 +27,3 @@ Pour vous aider à installer et utiliser le clavier, un assistant est à votre d
 Vous pouvez ajouter un sticker à vos favoris, simplement en maintenant le doigt dessus
 
 Vous pouvez aussi copier un lien au préalable et appuyer sur le bouton "+" pour l'inclure dans vos favoris
-
-#### Bouton pour rafraichir
-Les stickers actuels ne vous interessent pas ? Aucun problème, vous avez juste à appuyer sur le bouton approprié pour rafraîchir les nouveaux stickers et les stickers aléatoires
-
-#### Compatibilité
-L'application peut être installée sur tous les appareils Android à partir de la version 5.0, cela représente environ 95% des appareils Android, donc vous n'avez pas d'excuse 🦄
-
-#### Avant-gardiste
-L'application est codée en Kotlin et utilise le SDK 29, ce qui correspond à Android 10
-
-Ces deux atouts font que l'application a pu être développée dans de bonnes conditions et qu'aucun octet n'a été maltraité durant sa compilation 🌈
