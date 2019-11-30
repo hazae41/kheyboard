@@ -38,19 +38,20 @@ class StickerViewHolder(itemView: View) : ViewHolder(itemView) {
 
 class Kheyboard : InputMethodService() {
 
-    lateinit var azerty: View
-    lateinit var risibank: View
+    lateinit var azerty: Azerty
+    lateinit var risibank: Risibank
+    val Config = Config(this)
 
     override fun onCreateInputView(): View {
-        azerty = Azerty()
-        risibank = Risibank()
+        azerty = Azerty(this)
+        risibank = Risibank(this)
 
-        return risibank
+        return risibank.view
     }
 
-    fun JSONArray.getStickers(): List<String> {
-        return (0 until length()).map {
-            getJSONObject(it).getString("risibank_link")
+    fun getStickers(array: JSONArray): List<String> {
+        return (0 until array.length()).map {
+            array.getJSONObject(it).getString("risibank_link")
         }
     }
 
@@ -80,7 +81,7 @@ class Kheyboard : InputMethodService() {
         Config.json {
             val favoris = array("favoris")
 
-            favoris.getStickers().forEachIndexed { i, it ->
+            getStickers(favoris).forEachIndexed { i, it ->
                 if (url == it) favoris.remove(i)
             }
 
@@ -90,8 +91,8 @@ class Kheyboard : InputMethodService() {
         toast("Supprimé des favoris")
     }
 
-    fun RecyclicalSetup.withStickers(block: ItemDefinition<String, StickerViewHolder>.() -> Unit) {
-        withItem<String, StickerViewHolder>(R.layout.keyboard_sticker) {
+    fun RecyclicalSetup.withStickers(layoutRes: Int, block: ItemDefinition<String, StickerViewHolder>.() -> Unit) {
+        withItem<String, StickerViewHolder>(layoutRes) {
             onBind(::StickerViewHolder) { _, item ->
                 Glide.with(this@Kheyboard).load(item).into(image)
             }

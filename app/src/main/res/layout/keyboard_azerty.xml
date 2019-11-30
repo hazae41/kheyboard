@@ -8,13 +8,14 @@
 
     <TextView
         android:id="@+id/lettreA"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="A"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreZ"
         app:layout_constraintEnd_toStartOf="@+id/lettreZ"
@@ -24,12 +25,13 @@
 
     <TextView
         android:id="@+id/lettreZ"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="Z"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreE"
         app:layout_constraintEnd_toStartOf="@+id/lettreE"
@@ -38,12 +40,13 @@
 
     <TextView
         android:id="@+id/lettreE"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="E"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreR"
         app:layout_constraintEnd_toStartOf="@+id/lettreR"
@@ -52,12 +55,13 @@
 
     <TextView
         android:id="@+id/lettreR"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="R"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreT"
         app:layout_constraintEnd_toStartOf="@+id/lettreT"
@@ -66,12 +70,13 @@
 
     <TextView
         android:id="@+id/lettreT"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="T"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreY"
         app:layout_constraintEnd_toStartOf="@+id/lettreY"
@@ -80,12 +85,13 @@
 
     <TextView
         android:id="@+id/lettreY"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="Y"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreU"
         app:layout_constraintEnd_toStartOf="@+id/lettreU"
@@ -94,12 +100,13 @@
 
     <TextView
         android:id="@+id/lettreU"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="U"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreI"
         app:layout_constraintEnd_toStartOf="@+id/lettreI"
@@ -108,12 +115,13 @@
 
     <TextView
         android:id="@+id/lettreI"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="I"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreO"
         app:layout_constraintEnd_toStartOf="@+id/lettreO"
@@ -122,14 +130,15 @@
 
     <TextView
         android:id="@+id/lettreP"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="P"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toTopOf="@+id/lettreM"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,12 +147,13 @@
 
     <TextView
         android:id="@+id/lettreO"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="O"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreP"
         app:layout_constraintEnd_toStartOf="@+id/lettreP"
@@ -152,13 +162,14 @@
 
     <TextView
         android:id="@+id/lettreQ"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="Q"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreS"
         app:layout_constraintEnd_toStartOf="@+id/lettreS"
@@ -168,12 +179,13 @@
 
     <TextView
         android:id="@+id/lettreS"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="S"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreD"
         app:layout_constraintEnd_toStartOf="@+id/lettreD"
@@ -182,12 +194,13 @@
 
     <TextView
         android:id="@+id/lettreJ"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="J"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreK"
         app:layout_constraintEnd_toStartOf="@+id/lettreK"
@@ -196,12 +209,13 @@
 
     <TextView
         android:id="@+id/lettreH"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="H"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreJ"
         app:layout_constraintEnd_toStartOf="@+id/lettreJ"
@@ -210,12 +224,13 @@
 
     <TextView
         android:id="@+id/lettreG"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="G"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreH"
         app:layout_constraintEnd_toStartOf="@+id/lettreH"
@@ -224,12 +239,13 @@
 
     <TextView
         android:id="@+id/lettreF"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="F"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreG"
         app:layout_constraintEnd_toStartOf="@+id/lettreG"
@@ -238,12 +254,13 @@
 
     <TextView
         android:id="@+id/lettreD"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="D"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreF"
         app:layout_constraintEnd_toStartOf="@+id/lettreF"
@@ -252,12 +269,13 @@
 
     <TextView
         android:id="@+id/lettreK"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="K"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreL"
         app:layout_constraintEnd_toStartOf="@+id/lettreL"
@@ -266,17 +284,140 @@
 
     <TextView
         android:id="@+id/lettreL"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="L"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@+id/lettreM"
         app:layout_constraintEnd_toStartOf="@+id/lettreM"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lettreK" />
+
+    <TextView
+        android:id="@+id/lettreN"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="N"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/backspacebtn"
+        app:layout_constraintEnd_toStartOf="@+id/backspacebtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreB" />
+
+    <TextView
+        android:id="@+id/lettreB"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="B"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreN"
+        app:layout_constraintEnd_toStartOf="@+id/lettreN"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreV" />
+
+    <TextView
+        android:id="@+id/lettreV"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="V"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreB"
+        app:layout_constraintEnd_toStartOf="@+id/lettreB"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreC" />
+
+    <TextView
+        android:id="@+id/lettreC"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="C"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreV"
+        app:layout_constraintEnd_toStartOf="@+id/lettreV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreX" />
+
+    <TextView
+        android:id="@+id/lettreX"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="X"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreC"
+        app:layout_constraintEnd_toStartOf="@+id/lettreC"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreW" />
+
+    <TextView
+        android:id="@+id/lettreW"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="W"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lettreX"
+        app:layout_constraintEnd_toStartOf="@+id/lettreX"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lettreM"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shape_button"
+        android:gravity="center"
+        android:text="M"
+        android:textColor="@color/color_button"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toTopOf="@+id/backspacebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lettreL" />
+
+    <ImageView
+        android:id="@+id/backspacebtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+
+        android:background="@drawable/shape_button"
+        android:src="@drawable/ic_backspace"
+        app:layout_constraintBottom_toTopOf="@+id/searchbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lettreN" />
 
     <Button
         android:id="@+id/spacebar"
@@ -285,6 +426,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
+        android:tint="@color/color_button"
         android:background="@drawable/shape_button"
         android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -295,137 +437,25 @@
         android:id="@+id/deletebtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/ic_close"
         app:layout_constraintBottom_toBottomOf="@+id/input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/input" />
 
-    <ImageView
-        android:id="@+id/backspacebtn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/ic_backspace"
-        app:layout_constraintBottom_toTopOf="@+id/searchbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lettreN" />
-
-    <TextView
-        android:id="@+id/lettreN"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="N"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="@+id/backspacebtn"
-        app:layout_constraintEnd_toStartOf="@+id/backspacebtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lettreB" />
-
-    <TextView
-        android:id="@+id/lettreB"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="B"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreN"
-        app:layout_constraintEnd_toStartOf="@+id/lettreN"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lettreV" />
-
-    <TextView
-        android:id="@+id/lettreV"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="V"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreB"
-        app:layout_constraintEnd_toStartOf="@+id/lettreB"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lettreC" />
-
-    <TextView
-        android:id="@+id/lettreC"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="C"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreV"
-        app:layout_constraintEnd_toStartOf="@+id/lettreV"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lettreX" />
-
-    <TextView
-        android:id="@+id/lettreX"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="X"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreC"
-        app:layout_constraintEnd_toStartOf="@+id/lettreC"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lettreW" />
-
-    <TextView
-        android:id="@+id/lettreW"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="W"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lettreX"
-        app:layout_constraintEnd_toStartOf="@+id/lettreX"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/lettreM"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/shape_button"
-        android:gravity="center"
-        android:text="M"
-        android:textColor="@android:color/white"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toTopOf="@+id/backspacebtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lettreL" />
-
     <EditText
         android:id="@+id/input"
         android:layout_width="0dp"
         android:layout_height="38dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/shape_button"
+        android:background="@drawable/shape_button_dark"
         android:inputType="text"
         android:padding="8dp"
         android:singleLine="true"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_button"
         app:layout_constraintBottom_toTopOf="@+id/lettreP"
         app:layout_constraintEnd_toStartOf="@+id/deletebtn"
         app:layout_constraintStart_toStartOf="parent" />
@@ -440,16 +470,38 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <TextView
+        android:id="@+id/tipText"
+        android:text="Entrez un ou plusieurs mots clés"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:textColor="@color/color_button"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/recycler"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/recycler"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="160dp"
         android:clipToPadding="false"
         android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/input" />
 
@@ -459,7 +511,10 @@
         android:layout_height="35dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/ic_search_full"
+        android:padding="4dp"
+        android:src="@drawable/ic_search"
+        android:tint="@color/color_button"
+        android:background="@drawable/shape_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

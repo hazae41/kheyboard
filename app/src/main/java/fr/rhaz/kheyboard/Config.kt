@@ -8,8 +8,6 @@ import kotlinx.android.synthetic.main.settings.view.*
 import org.json.JSONObject
 import java.io.File
 
-val Context.Config get() = Config(this)
-
 class Config(val ctx: Context) {
     val settings get() = File(ctx.getExternalFilesDir(null), "settings.json")
     val config get() = if (settings.exists()) JSONObject(settings.readText()) else JSONObject()

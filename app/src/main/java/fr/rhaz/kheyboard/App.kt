@@ -46,7 +46,7 @@ class Main : AppCompatActivity() {
                 startActivity(Intent(this, Billing::class.java))
             }
             R.id.action_options -> {
-                Config.openSettings()
+                Config(this).openSettings()
             }
             else -> return false
         }

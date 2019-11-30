@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
     android:background="@color/dark">
 
     <android.inputmethodservice.KeyboardView
@@ -15,37 +15,121 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/risibank"
-        app:layout_constraintEnd_toStartOf="@+id/backspacebtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/searchbtn"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/transparent" />
+        android:padding="8dp">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toStartOf="@+id/backspacebtn"
+            app:layout_constraintStart_toEndOf="@+id/searchbtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/risibank" />
+
+        <ImageButton
+            android:id="@+id/spacebtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:tint="@color/color_button"
+            android:background="@drawable/shape_button"
+            android:src="@drawable/ic_space_bar"
+            android:contentDescription="@string/keyboard_risibank_space"
+            app:layout_constraintEnd_toStartOf="@+id/returnbtn"
+            app:layout_constraintStart_toEndOf="@+id/backspacebtn"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo" />
+
+        <ImageButton
+            android:id="@+id/searchbtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:tint="@color/color_button"
+            android:background="@drawable/shape_button"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toStartOf="@+id/logo"
+            app:layout_constraintStart_toEndOf="@+id/donatebtn"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo" />
+
+        <ImageButton
+            android:id="@+id/donatebtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:tint="@color/color_button"
+            android:background="@drawable/shape_button"
+            android:src="@drawable/ic_money"
+            app:layout_constraintEnd_toStartOf="@+id/searchbtn"
+            app:layout_constraintStart_toEndOf="@+id/addbtn"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo" />
+
+        <ImageButton
+            android:id="@+id/backspacebtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:tint="@color/color_button"
+            android:background="@drawable/shape_button"
+            android:src="@drawable/ic_backspace"
+            app:layout_constraintEnd_toStartOf="@+id/spacebtn"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo" />
+
+        <ImageButton
+            android:id="@+id/returnbtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:tint="@color/color_button"
+            android:background="@drawable/shape_button"
+            android:src="@drawable/ic_keyboard_return"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spacebtn"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo" />
+
+        <ImageButton
+            android:id="@+id/addbtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:tint="@color/color_button"
+            android:background="@drawable/shape_button"
+            android:src="@drawable/ic_add"
+            app:layout_constraintEnd_toStartOf="@+id/donatebtn"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/recycler"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="8dp"
-        android:clipToPadding="false"
-        android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="8dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerInner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <TextView
-        android:id="@+id/favoris_tip"
+        android:id="@+id/favorisText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/keyboard_risibank_favoris_tip"
@@ -56,10 +140,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/error_msg"
+        android:id="@+id/errorText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Impossible de se connecter, essayez de désactiver l'économiseur de batterie"
@@ -70,25 +154,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <ProgressBar
-        android:id="@+id/loading_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:indeterminateTint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
-        android:paddingTop="8dp"
+        android:paddingTop="16dp"
         android:paddingEnd="8dp"
         android:paddingBottom="16dp"
         app:layout_constraintTop_toBottomOf="@+id/recycler">
@@ -97,13 +170,14 @@
             android:id="@+id/nouveauxbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/shape_naked_button"
             android:stateListAnimator="@null"
             android:text="@string/keyboard_risibank_nouveaux"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/populairesbtn"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -112,13 +186,14 @@
             android:id="@+id/populairesbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/shape_naked_button"
             android:stateListAnimator="@null"
             android:text="@string/keyboard_risibank_populaires"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/favorisbtn"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/nouveauxbtn"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -126,13 +201,14 @@
             android:id="@+id/aleatoiresbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/shape_naked_button"
             android:stateListAnimator="@null"
             android:text="@string/keyboard_risibank_aleatoires"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/favorisbtn"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -140,86 +216,19 @@
             android:id="@+id/favorisbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/shape_naked_button"
             android:stateListAnimator="@null"
             android:text="@string/keyboard_risibank_favoris"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/aleatoiresbtn"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/populairesbtn"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
-        android:id="@+id/spacebtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_space_bar"
-        android:contentDescription="@string/keyboard_risibank_space"
-        app:layout_constraintEnd_toStartOf="@+id/returnbtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/backspacebtn"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <ImageButton
-        android:id="@+id/searchbtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_search"
-        app:layout_constraintEnd_toStartOf="@+id/logo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/donatebtn"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
-
-    <ImageButton
-        android:id="@+id/donatebtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_money"
-        app:layout_constraintEnd_toStartOf="@+id/searchbtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/addbtn"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
-
-    <ImageButton
-        android:id="@+id/backspacebtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_backspace"
-        app:layout_constraintEnd_toStartOf="@+id/spacebtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
-
-    <ImageButton
-        android:id="@+id/returnbtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_keyboard_return"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/spacebtn"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
-
-    <ImageButton
-        android:id="@+id/addbtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_add"
-        app:layout_constraintEnd_toStartOf="@+id/donatebtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
