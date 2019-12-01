@@ -4,19 +4,20 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.media.MediaPlayer
 import android.view.KeyEvent
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Button
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.afollestad.recyclical.datasource.emptyDataSourceTyped
 import com.afollestad.recyclical.setup
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
 import fr.rhaz.kheyboard.utils.*
 import kotlinx.android.synthetic.main.keyboard_risibank.view.*
+import kotlinx.android.synthetic.main.keyboard_risibank_add.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
@@ -24,7 +25,7 @@ class Risibank(val kheyboard: Kheyboard) {
 
     val stickers = emptyDataSourceTyped<String>()
 
-    var view: View = kheyboard.layoutInflater.inflate(R.layout.keyboard_risibank, null)
+    var view = kheyboard.layoutInflater.inflate(R.layout.keyboard_risibank, null)
 
     val buttons = view.run {
         listOf(nouveauxbtn, populairesbtn, favorisbtn, aleatoiresbtn)
@@ -55,23 +56,6 @@ class Risibank(val kheyboard: Kheyboard) {
         recycler.isRefreshing = loading
     }
 
-    var error = false
-        set(value) {
-            field = value
-            updateErrorText()
-        }
-
-    fun updateErrorText() = view.run {
-        if (selected == favorisbtn) {
-            errorText.visibility = GONE
-            return
-        }
-        errorText.visibility = when (error) {
-            true -> VISIBLE
-            false -> GONE
-        }
-    }
-
     fun updateFavorisText() = view.run {
         if (selected != favorisbtn) {
             favorisText.visibility = GONE
@@ -99,14 +83,11 @@ class Risibank(val kheyboard: Kheyboard) {
         try {
             val res = request().await()
             loading = false
-            error = false
             data = res.getJSONObject("stickers")
         } catch (ex: Exception) {
             ex.printStackTrace()
             loading = false
-            error = true
-            delay(1000)
-            reload()
+            kheyboard.longToast("Impossible de se connecter, essayez de désactiver l'économiseur de batterie")
         }
     }
 
@@ -133,11 +114,12 @@ class Risibank(val kheyboard: Kheyboard) {
                             true -> unfavorite(item)
                             false -> favorite(item)
                         }
-                        getStickers()
                         vibrate()
+                        getStickers()
                     }
                 }
             }
+            recyclerInner.itemAnimator = DefaultItemAnimator()
             recycler.setOnRefreshListener {
                 GlobalScope.launch(Dispatchers.Main) {
                     reload()
@@ -150,7 +132,6 @@ class Risibank(val kheyboard: Kheyboard) {
         buttons.forEach { button ->
             button.setOnClickListener {
                 selected = button
-                kheyboard.vibrate()
             }
         }
     }
@@ -163,7 +144,7 @@ class Risibank(val kheyboard: Kheyboard) {
             if (url == null) {
                 kheyboard.toast("Copiez un lien pour l'ajouter aux favoris")
             } else {
-                kheyboard.favorite(url)
+                AddDialog(url, kheyboard).open()
             }
         }
     }
@@ -173,7 +154,6 @@ class Risibank(val kheyboard: Kheyboard) {
             val intent = Intent(kheyboard, Billing::class.java)
             intent.flags += FLAG_ACTIVITY_NEW_TASK
             kheyboard.startActivity(intent)
-            kheyboard.vibrate()
         }
     }
 
@@ -181,7 +161,6 @@ class Risibank(val kheyboard: Kheyboard) {
         searchbtn.setOnClickListener {
             kheyboard.run {
                 azerty.switch()
-                vibrate()
             }
         }
     }
@@ -189,12 +168,10 @@ class Risibank(val kheyboard: Kheyboard) {
     fun initLogo() = view.run {
         logo.setOnClickListener {
             kheyboard.inputMethodManager.showInputMethodPicker()
-            kheyboard.vibrate()
         }
 
         logo.setOnLongClickListener {
             MediaPlayer.create(kheyboard, R.raw.risitas).start()
-            kheyboard.vibrate()
             true
         }
     }
@@ -206,7 +183,6 @@ class Risibank(val kheyboard: Kheyboard) {
             if (selectedText == null || selectedText.isEmpty())
                 input.deleteSurroundingText(1, 0)
             else input.commitText("", 1)
-            kheyboard.vibrate()
         }
     }
 
@@ -214,7 +190,6 @@ class Risibank(val kheyboard: Kheyboard) {
         spacebtn.setOnClickListener {
             val input = kheyboard.currentInputConnection
             input.commitText(" ", 1)
-            kheyboard.vibrate()
         }
     }
 
@@ -222,7 +197,6 @@ class Risibank(val kheyboard: Kheyboard) {
         returnbtn.setOnClickListener {
             kheyboard.run {
                 sendDownUpKeyEvents(KeyEvent.KEYCODE_ENTER)
-                vibrate()
             }
         }
     }
@@ -252,5 +226,46 @@ class Risibank(val kheyboard: Kheyboard) {
 
     fun switch() {
         kheyboard.setInputView(view)
+        getStickers()
+    }
+}
+
+class AddDialog(val url: String, val kheyboard: Kheyboard) {
+    val view = kheyboard.layoutInflater.inflate(R.layout.keyboard_risibank_add, null)
+
+    fun open() {
+        kheyboard.setInputView(view)
+    }
+
+    fun close() {
+        kheyboard.risibank.switch()
+    }
+
+    fun initImage() = view.run {
+        Glide.with(kheyboard).load(url).dontTransform().into(imageView)
+    }
+
+    fun initText() = view.run {
+        textView.text = url
+    }
+
+    fun initYes() = view.run {
+        yesBtn.setOnClickListener {
+            kheyboard.favorite(url)
+            close()
+        }
+    }
+
+    fun initNo() = view.run {
+        noBtn.setOnClickListener {
+            close()
+        }
+    }
+
+    init {
+        initImage()
+        initText()
+        initYes()
+        initNo()
     }
 }

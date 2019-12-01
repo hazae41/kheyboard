@@ -496,7 +496,6 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:clipToPadding="false"
         android:orientation="horizontal"
         android:paddingTop="8dp"
         android:paddingStart="4dp"

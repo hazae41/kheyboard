@@ -21,7 +21,6 @@
 
     <ImageView
         android:layout_height="@android:dimen/thumbnail_height"
-        app:srcCompat="@android:color/transparent"
         android:id="@+id/sticker"
         android:layout_width="@android:dimen/thumbnail_width"
         app:layout_constraintEnd_toEndOf="parent"

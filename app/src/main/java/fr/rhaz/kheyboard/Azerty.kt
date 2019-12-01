@@ -8,10 +8,7 @@ import com.afollestad.recyclical.setup
 import com.android.volley.Request.Method.POST
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import fr.rhaz.kheyboard.utils.array
-import fr.rhaz.kheyboard.utils.deferred
-import fr.rhaz.kheyboard.utils.inputMethodManager
-import fr.rhaz.kheyboard.utils.toast
+import fr.rhaz.kheyboard.utils.*
 import kotlinx.android.synthetic.main.keyboard_azerty.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -36,20 +33,26 @@ class Azerty(val kheyboard: Kheyboard) {
         }
 
         GlobalScope.launch(Dispatchers.Main) {
-            tipText.visibility = GONE
-            progressBar.visibility = VISIBLE
-            val res = request(input.text).await()
-            progressBar.visibility = GONE
-            val array = res.array("stickers")
-            stickers.set(kheyboard.getStickers(array))
-            recycler.smoothScrollToPosition(0)
+            try {
+                tipText.visibility = GONE
+                progressBar.visibility = VISIBLE
+                val res = request(input.text).await()
+                progressBar.visibility = GONE
+                val array = res.array("stickers")
+                stickers.set(kheyboard.getStickers(array))
+                recycler.smoothScrollToPosition(0)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                tipText.visibility = VISIBLE
+                progressBar.visibility = GONE
+                kheyboard.longToast("Impossible de se connecter, essayez de désactiver l'économiseur de batterie")
+            }
         }
     }
 
     fun initSearchButton() = view.run {
         searchbtn.setOnClickListener {
             search()
-            kheyboard.vibrate()
         }
     }
 
@@ -72,7 +75,6 @@ class Azerty(val kheyboard: Kheyboard) {
         fun Map.Entry<TextView, String>.assign() {
             key.setOnClickListener {
                 input.text.insert(input.selectionEnd, value)
-                kheyboard.vibrate()
             }
         }
 
@@ -110,7 +112,6 @@ class Azerty(val kheyboard: Kheyboard) {
         spacebar.setOnLongClickListener {
             val input = kheyboard.inputMethodManager
             input.showInputMethodPicker()
-            kheyboard.vibrate()
             true
         }
     }
@@ -124,22 +125,18 @@ class Azerty(val kheyboard: Kheyboard) {
             } else {
                 input.text.delete(input.selectionEnd - 1, input.selectionEnd)
             }
-
-            kheyboard.vibrate()
         }
     }
 
     fun initDeleteButton() = view.run {
         deletebtn.setOnClickListener {
             input.text.clear()
-            kheyboard.vibrate()
         }
     }
 
     fun initRisibankButton() = view.run {
         risibankbtn.setOnClickListener {
             kheyboard.risibank.switch()
-            kheyboard.vibrate()
         }
     }
 

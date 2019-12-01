@@ -56,7 +56,7 @@ class Kheyboard : InputMethodService() {
     }
 
     fun vibrate() {
-        if (Config.vibrations) vibrator.vibrate(100)
+        if (Config.vibrations) vibrator.vibrate(10)
     }
 
     fun favorite(url: String) {
@@ -94,7 +94,7 @@ class Kheyboard : InputMethodService() {
     fun RecyclicalSetup.withStickers(layoutRes: Int, block: ItemDefinition<String, StickerViewHolder>.() -> Unit) {
         withItem<String, StickerViewHolder>(layoutRes) {
             onBind(::StickerViewHolder) { _, item ->
-                Glide.with(this@Kheyboard).load(item).into(image)
+                Glide.with(this@Kheyboard).load(item).dontTransform().into(image)
             }
             onClick {
                 val types = EditorInfoCompat.getContentMimeTypes(currentInputEditorInfo)
@@ -103,7 +103,7 @@ class Kheyboard : InputMethodService() {
                 }
                 if (gifSupport && !Config.useUrls) commitImage(item)
                 else currentInputConnection.commitText(item, 1)
-                if (Config.vibrations) vibrator.vibrate(100)
+                vibrate()
             }
             block()
         }

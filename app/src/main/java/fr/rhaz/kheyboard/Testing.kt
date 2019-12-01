@@ -25,7 +25,7 @@ class Testing(val main: Main) : Fragment() {
             input.text.clear()
             if (!URLUtil.isValidUrl(url))
                 activity!!.toast("URL invalide")
-            else Glide.with(activity!!).load(url).into(sticker)
+            else Glide.with(activity!!).load(url).dontTransform().into(sticker)
         }
 
         input.requestFocus()
