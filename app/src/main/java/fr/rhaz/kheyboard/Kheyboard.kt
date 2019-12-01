@@ -59,6 +59,12 @@ class Kheyboard : InputMethodService() {
         if (Config.vibrations) vibrator.vibrate(10)
     }
 
+    fun getFavoris() = Config.config.array("favoris")
+
+    fun isFavorite(url: String): Boolean {
+        return getStickers(getFavoris()).contains(url)
+    }
+
     fun favorite(url: String) {
         if (!URLUtil.isValidUrl(url)) {
             toast("URL invalide")

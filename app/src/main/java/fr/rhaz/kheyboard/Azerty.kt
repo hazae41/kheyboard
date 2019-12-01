@@ -63,7 +63,10 @@ class Azerty(val kheyboard: Kheyboard) {
             kheyboard.run {
                 withStickers(R.layout.keyboard_sticker_horizontal) {
                     onLongClick {
-                        favorite(item)
+                        when (kheyboard.isFavorite(item)) {
+                            false -> favorite(item)
+                            true -> unfavorite(item)
+                        }
                         vibrate()
                     }
                 }

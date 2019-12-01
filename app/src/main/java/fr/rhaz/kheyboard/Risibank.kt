@@ -91,11 +91,12 @@ class Risibank(val kheyboard: Kheyboard) {
         }
     }
 
+
     fun getStickers() = view.run {
         val array = when (selected) {
             nouveauxbtn -> data.array("tms")
             populairesbtn -> data.array("views")
-            favorisbtn -> Config(kheyboard).config.array("favoris")
+            favorisbtn -> kheyboard.getFavoris()
             aleatoiresbtn -> data.array("random")
             else -> return
         }
@@ -110,12 +111,17 @@ class Risibank(val kheyboard: Kheyboard) {
                 withDataSource(stickers)
                 withStickers(R.layout.keyboard_sticker) {
                     onLongClick {
-                        when (selected == favorisbtn) {
-                            true -> unfavorite(item)
+                        when (kheyboard.isFavorite(item)) {
                             false -> favorite(item)
+                            true -> {
+                                unfavorite(item)
+                                
+                                if (selected == favorisbtn) {
+                                    stickers.remove(item)
+                                }
+                            }
                         }
                         vibrate()
-                        getStickers()
                     }
                 }
             }
