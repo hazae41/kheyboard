@@ -11,7 +11,6 @@
         android:layout_width="36dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="A"
@@ -42,7 +41,6 @@
         android:id="@+id/lettreE"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="E"
@@ -57,7 +55,6 @@
         android:id="@+id/lettreR"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="R"
@@ -72,7 +69,6 @@
         android:id="@+id/lettreT"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="T"
@@ -87,7 +83,6 @@
         android:id="@+id/lettreY"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="Y"
@@ -102,7 +97,6 @@
         android:id="@+id/lettreU"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="U"
@@ -117,7 +111,6 @@
         android:id="@+id/lettreI"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="I"
@@ -134,7 +127,6 @@
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="P"
@@ -149,7 +141,6 @@
         android:id="@+id/lettreO"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="O"
@@ -165,7 +156,6 @@
         android:layout_width="36dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="Q"
@@ -181,7 +171,6 @@
         android:id="@+id/lettreS"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="S"
@@ -196,7 +185,6 @@
         android:id="@+id/lettreJ"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="J"
@@ -211,7 +199,6 @@
         android:id="@+id/lettreH"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="H"
@@ -226,7 +213,6 @@
         android:id="@+id/lettreG"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="G"
@@ -241,7 +227,6 @@
         android:id="@+id/lettreF"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="F"
@@ -256,7 +241,6 @@
         android:id="@+id/lettreD"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="D"
@@ -271,7 +255,6 @@
         android:id="@+id/lettreK"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="K"
@@ -301,7 +284,6 @@
         android:id="@+id/lettreN"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="N"
@@ -316,7 +298,6 @@
         android:id="@+id/lettreB"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="B"
@@ -331,7 +312,6 @@
         android:id="@+id/lettreV"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="V"
@@ -346,7 +326,6 @@
         android:id="@+id/lettreC"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="C"
@@ -361,7 +340,6 @@
         android:id="@+id/lettreX"
         android:layout_width="36dp"
         android:layout_height="40dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="X"
@@ -377,7 +355,6 @@
         android:layout_width="36dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-
         android:background="@drawable/shape_button"
         android:gravity="center"
         android:text="W"
@@ -409,11 +386,10 @@
         android:id="@+id/backspacebtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:padding="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-
         android:background="@drawable/shape_button"
+        android:padding="4dp"
         android:src="@drawable/ic_backspace"
         app:layout_constraintBottom_toTopOf="@+id/searchbtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -426,9 +402,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        android:tint="@color/color_button"
         android:background="@drawable/shape_button"
         android:stateListAnimator="@null"
+        android:tint="@color/color_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/searchbtn"
         app:layout_constraintStart_toEndOf="@+id/risibankbtn" />
@@ -448,8 +424,8 @@
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/shape_button_dark"
         android:inputType="text"
@@ -473,14 +449,14 @@
 
     <TextView
         android:id="@+id/tipText"
-        android:text="Entrez un ou plusieurs mots clés"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrez un ou plusieurs mots clés"
         android:textAlignment="center"
         android:textColor="@color/color_button"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@+id/recycler"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler" />
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintTop_toTopOf="@+id/recycler" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -489,16 +465,16 @@
         android:indeterminate="true"
         android:indeterminateTint="@android:color/white"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@+id/recycler"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler" />
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintTop_toTopOf="@+id/recycler" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="horizontal"
-        android:paddingTop="8dp"
         android:paddingStart="4dp"
+        android:paddingTop="8dp"
         android:paddingEnd="4dp"
         android:paddingBottom="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -510,10 +486,10 @@
         android:layout_height="35dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
+        android:background="@drawable/shape_button"
         android:padding="4dp"
         android:src="@drawable/ic_search"
         android:tint="@color/color_button"
-        android:background="@drawable/shape_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

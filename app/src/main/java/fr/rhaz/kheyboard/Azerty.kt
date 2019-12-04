@@ -86,6 +86,7 @@ class Azerty(val kheyboard: Kheyboard) {
                 lettreA to "a",
                 lettreB to "b",
                 lettreC to "c",
+                lettreD to "d",
                 lettreE to "e",
                 lettreF to "f",
                 lettreG to "g",
