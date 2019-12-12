@@ -1,11 +1,28 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
+
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/dark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorTertiary">@android:color/white</item>
+        <item name="android:windowBackground">@color/dark</item>
+        <item name="actionBarStyle">@style/AppActionBar</item>
+
+        <item name="android:navigationBarColor">@color/dark</item>
+        <item name="android:statusBarColor">@color/dark</item>
+    </style>
+
+    <style name="AppActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@null</item>
+        <item name="titleTextStyle">@style/AppActionBar.Title</item>
+    </style>
+
+    <style name="AppActionBar.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

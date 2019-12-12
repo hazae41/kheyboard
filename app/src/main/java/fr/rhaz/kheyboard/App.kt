@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.FragmentStatePagerAdapter
 import kotlinx.android.synthetic.main.app.*
 
@@ -32,6 +33,7 @@ class Main : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu) = true.also {
         menuInflater.inflate(R.menu.menu, menu)
+        (menu as? MenuBuilder)?.setOptionalIconsVisible(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

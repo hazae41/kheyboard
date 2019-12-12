@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.billing.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 
 val skuList = listOf("sku_small", "sku_medium", "sku_large", "sku_xlarge", "sku_xxlarge")
@@ -42,13 +43,12 @@ class Billing : AppCompatActivity() {
         setContentView(R.layout.billing)
 
         client = BillingClient { purchases ->
-            purchases.forEach {
-                val params = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(it.purchaseToken)
-                GlobalScope.launch(Dispatchers.IO) {
-                    client.acknowledgePurchase(params.build())
+            GlobalScope.launch(Dispatchers.IO) {
+                client.consumeAll(purchases)
+                withContext(Dispatchers.Main) {
+                    thanksDialog()
                 }
             }
-            thanksDialog()
         }
 
         recyclerView.setup {
@@ -85,6 +85,7 @@ class Billing : AppCompatActivity() {
             client.connect().join()
             val skus = client.query().await()
             dataSource.set(skus)
+            client.consumePurchases()
         } catch (e: IOException) {
             errorDialog()
         }
@@ -110,6 +111,7 @@ class Billing : AppCompatActivity() {
 fun Context.BillingClient(listener: (List<Purchase>) -> Unit) =
         BillingClient.newBuilder(this)
                 .setListener { res, purchases -> if (res.responseCode == OK) listener(purchases!!) }
+                .enablePendingPurchases()
                 .build()
 
 
@@ -121,6 +123,21 @@ fun BillingClient.connect() = job { resolve, reject ->
             else resolve()
         }
     })
+}
+
+suspend fun BillingClient.consumeAll(purchases: List<Purchase>) {
+    purchases.forEach {
+        val params = ConsumeParams.newBuilder().setPurchaseToken(it.purchaseToken)
+        consumePurchase(params.build())
+    }
+}
+
+fun BillingClient.consumePurchases() {
+    val res = queryPurchases(INAPP)
+    if (res.responseCode != OK) return
+    GlobalScope.launch(Dispatchers.IO) {
+        consumeAll(res.purchasesList)
+    }
 }
 
 fun BillingClient.query() = deferred<List<SkuDetails>> { resolve, reject ->

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/laout"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark">
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/lettreA"
@@ -431,7 +431,7 @@
         android:inputType="text"
         android:padding="8dp"
         android:singleLine="true"
-        android:textColor="@color/color_button"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/lettreP"
         app:layout_constraintEnd_toStartOf="@+id/deletebtn"
         app:layout_constraintStart_toStartOf="parent" />
