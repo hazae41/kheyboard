@@ -14,8 +14,7 @@ import com.afollestad.recyclical.datasource.emptyDataSourceTyped
 import com.afollestad.recyclical.setup
 import com.afollestad.recyclical.withItem
 import com.android.billingclient.api.*
-import com.android.billingclient.api.BillingClient.BillingResponse
-import com.android.billingclient.api.BillingClient.BillingResponse.OK
+import com.android.billingclient.api.BillingClient.BillingResponseCode.OK
 import com.android.billingclient.api.BillingClient.SkuType.INAPP
 import com.bumptech.glide.Glide
 import fr.rhaz.kheyboard.utils.deferred
@@ -42,7 +41,15 @@ class Billing : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.billing)
 
-        client = BillingClient { thanksDialog() }
+        client = BillingClient { purchases ->
+            purchases.forEach {
+                val params = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(it.purchaseToken)
+                GlobalScope.launch(Dispatchers.IO) {
+                    client.acknowledgePurchase(params.build())
+                }
+            }
+            thanksDialog()
+        }
 
         recyclerView.setup {
             withDataSource(dataSource)
@@ -70,6 +77,7 @@ class Billing : AppCompatActivity() {
     fun purchase(sku: SkuDetails) {
         val flow = BillingFlowParams.newBuilder().setSkuDetails(sku).build()
         client.launchBillingFlow(this, flow)
+
     }
 
     fun retrieve() = GlobalScope.launch(Dispatchers.Main) {
@@ -101,15 +109,15 @@ class Billing : AppCompatActivity() {
 
 fun Context.BillingClient(listener: (List<Purchase>) -> Unit) =
         BillingClient.newBuilder(this)
-                .setListener { res, purchases -> if (res == OK) listener(purchases!!) }
+                .setListener { res, purchases -> if (res.responseCode == OK) listener(purchases!!) }
                 .build()
 
 
 fun BillingClient.connect() = job { resolve, reject ->
     startConnection(object : BillingClientStateListener {
         override fun onBillingServiceDisconnected() = reject(IOException("Disconected"))
-        override fun onBillingSetupFinished(@BillingResponse res: Int) {
-            if (res != OK) reject(IOException("Error"))
+        override fun onBillingSetupFinished(res: BillingResult) {
+            if (res.responseCode != OK) reject(IOException("Error"))
             else resolve()
         }
     })
@@ -118,7 +126,7 @@ fun BillingClient.connect() = job { resolve, reject ->
 fun BillingClient.query() = deferred<List<SkuDetails>> { resolve, reject ->
     val params = SkuDetailsParams.newBuilder().setSkusList(skuList).setType(INAPP).build()
     querySkuDetailsAsync(params, fun(res, skus) {
-        if (res != OK) return reject(IOException("Error"))
+        if (res.responseCode != OK) return reject(IOException("Error"))
         skus.sortBy { it.priceAmountMicros }
         resolve(skus)
     })
