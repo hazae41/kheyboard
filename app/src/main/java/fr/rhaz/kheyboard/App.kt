@@ -1,14 +1,19 @@
 package fr.rhaz.kheyboard
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.Intent.*
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.gelitenight.waveview.library.WaveView
 import kotlinx.android.synthetic.main.app.*
 
 class Main : AppCompatActivity() {
@@ -17,6 +22,30 @@ class Main : AppCompatActivity() {
         super.onCreate(state)
         setContentView(R.layout.app)
         pager.adapter = Pages()
+
+        waveView.apply {
+            isShowWave = true
+            setShapeType(WaveView.ShapeType.SQUARE)
+            this.setWaveColor(resources.getColor(R.color.light_dark), resources.getColor(R.color.darker))
+        }
+
+        val waveShiftAnim = ObjectAnimator.ofFloat(waveView, "waveShiftRatio", 0f, 1f).apply {
+            repeatCount = ValueAnimator.INFINITE
+            duration = 1000
+            interpolator = LinearInterpolator()
+        }
+
+        val amplitudeAnim = ObjectAnimator.ofFloat(waveView, "amplitudeRatio", 0.001f, 0.020f).apply {
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.REVERSE
+            duration = 1000
+            interpolator = LinearInterpolator()
+        }
+
+        AnimatorSet().apply {
+            playTogether(waveShiftAnim, amplitudeAnim)
+            start()
+        }
     }
 
     inner class Pages : FragmentStatePagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

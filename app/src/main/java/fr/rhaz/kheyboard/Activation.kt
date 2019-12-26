@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.app.*
 import kotlinx.android.synthetic.main.app_activation.*
+
 
 class Activation(val main: Main) : Fragment() {
     override fun onCreateView(
@@ -19,12 +19,9 @@ class Activation(val main: Main) : Fragment() {
 
     override fun onViewCreated(view: View, state: Bundle?) {
         super.onViewCreated(view, state)
-        
+
         activate.setOnClickListener {
             startActivity(Intent(Settings.ACTION_INPUT_METHOD_SETTINGS))
-        }
-        nextbtn.setOnClickListener {
-            main.pager.currentItem++
         }
     }
 }

@@ -8,4 +8,5 @@
     <string name="keyboard_risibank_favoris">Favoris</string>
     <string name="keyboard_risibank_favoris_tip">Ajoutez un sticker aux favoris en restant appuyé dessus</string>
     <string name="keyboard_risibank_space">espace</string>
+    <string name="swipe"><![CDATA[< Fais glisser pour continuer >]]></string>
 </resources>

@@ -6,4 +6,5 @@
 
     <color name="dark">#212121</color>
     <color name="light_dark">#424242</color>
+    <color name="darker">#1b1b1b</color>
 </resources>

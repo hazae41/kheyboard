@@ -30,10 +30,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="@android:dimen/thumbnail_width"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:background="@android:color/white"
+            android:maxWidth="@android:dimen/thumbnail_width"
             android:maxHeight="@android:dimen/thumbnail_height"
             android:scaleType="fitCenter" />
 

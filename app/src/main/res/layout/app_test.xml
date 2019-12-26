@@ -24,20 +24,20 @@
         android:id="@+id/sticker_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/astuce2">
 
         <ImageView
             android:id="@+id/sticker"
-            android:layout_width="@android:dimen/thumbnail_width"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:background="@android:color/white"
+            android:maxWidth="@android:dimen/thumbnail_width"
             android:maxHeight="@android:dimen/thumbnail_height"
             android:scaleType="fitCenter" />
 
