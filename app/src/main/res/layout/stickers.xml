@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appbar"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/btn_search"
@@ -24,19 +24,19 @@
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_button_background"
+            android:src="@drawable/ic_search"
             android:tint="@color/color_button_foreground"
             android:tooltipText="Rechercher"
-            android:src="@drawable/ic_search"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constrainedWidth="true"
             android:src="@drawable/img_risibank"
-            app:layout_constraintStart_toEndOf="@id/btn_search"
-            app:layout_constraintEnd_toStartOf="@id/btn_expand" />
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@id/btn_expand"
+            app:layout_constraintStart_toEndOf="@id/btn_search" />
 
         <ImageButton
             android:id="@+id/btn_expand"
@@ -44,24 +44,24 @@
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_button_background"
+            android:src="@drawable/ic_expand_more"
             android:tint="@color/color_button_foreground"
             android:tooltipText="Agrandir le clavier"
-            android:src="@drawable/ic_expand_more"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiper"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:layout_height="@dimen/height"
-        android:layout_width="0dp"
         app:layout_constrainedHeight="true"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/categories"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintBottom_toTopOf="@id/categories">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
@@ -75,140 +75,160 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_premium"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/categories"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintBottom_toTopOf="@id/categories">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar">
 
         <TextView
             android:id="@+id/text_premium"
-            android:text="Cette fonctionnalité est réservée à l'élite"
-            android:textSize="20dp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Cette fonctionnalité est réservée à l'élite"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/btn_premium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_premium" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_premium"
-            android:text="Faire partie de l'élite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="@color/color_button_foreground"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_button_background"
-            app:layout_constraintStart_toStartOf="parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="Faire partie de l'élite"
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_premium"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_premium" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/categories"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="8dp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/btn_link"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Lien copié"
             android:src="@drawable/ic_link"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Lien copié"
+            app:layout_constraintEnd_toStartOf="@id/btn_history"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_max="40dp" />
 
         <ImageButton
             android:id="@+id/btn_history"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Historique"
             android:src="@drawable/ic_history"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Historique"
+            app:layout_constraintEnd_toStartOf="@id/btn_favorite"
+            app:layout_constraintStart_toEndOf="@id/btn_link"
+            app:layout_constraintWidth_max="40dp" />
 
         <ImageButton
             android:id="@+id/btn_favorite"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Favoris"
             android:src="@drawable/ic_heart"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Favoris"
+            app:layout_constraintEnd_toStartOf="@id/btn_trending"
+            app:layout_constraintStart_toEndOf="@id/btn_history"
+            app:layout_constraintWidth_max="40dp" />
 
         <ImageButton
             android:id="@+id/btn_trending"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Tendances"
             android:src="@drawable/ic_hot"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Tendances"
+            app:layout_constraintEnd_toStartOf="@id/btn_popular"
+            app:layout_constraintStart_toEndOf="@id/btn_favorite"
+            app:layout_constraintWidth_max="40dp" />
 
         <ImageButton
             android:id="@+id/btn_popular"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Populaires"
             android:src="@drawable/ic_star"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Populaires"
+            app:layout_constraintEnd_toStartOf="@id/btn_new"
+            app:layout_constraintStart_toEndOf="@id/btn_trending"
+            app:layout_constraintWidth_max="40dp" />
 
         <ImageButton
             android:id="@+id/btn_new"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Nouveaux"
             android:src="@drawable/ic_time"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Nouveaux"
+            app:layout_constraintEnd_toStartOf="@id/btn_random"
+            app:layout_constraintStart_toEndOf="@id/btn_popular"
+            app:layout_constraintWidth_max="40dp" />
 
         <ImageButton
             android:id="@+id/btn_random"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_nakedbutton_background"
-            android:tooltipText="Au hasard"
             android:src="@drawable/ic_random"
-            android:tint="@color/color_nakedbutton_foreground" />
+            android:tint="@color/color_nakedbutton_foreground"
+            android:tooltipText="Au hasard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_new"
+            app:layout_constraintWidth_max="40dp" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

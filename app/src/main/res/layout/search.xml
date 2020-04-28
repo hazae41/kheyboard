@@ -83,23 +83,23 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="4dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:hint="Rechercher"
+        android:textColorHint="@android:color/darker_gray"
+        android:padding="8dp"
         android:background="@drawable/shape_round"
-        android:backgroundTint="@color/color_button_background"
+        android:backgroundTint="#424242"
         android:textColor="@color/color_button_foreground"
         app:layout_constraintTop_toBottomOf="@id/recycler"
         app:layout_constraintBottom_toTopOf="@id/keybar3"
         app:layout_constraintStart_toStartOf="@id/keybar3"
         app:layout_constraintEnd_toEndOf="@id/keybar3" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/keybar3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:orientation="horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,117 +109,137 @@
         <Button
             android:text="A"
             android:id="@+id/key_a"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_z" />
 
         <Button
             android:text="Z"
             android:id="@+id/key_z"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_a"
+            app:layout_constraintEnd_toStartOf="@id/key_e" />
 
         <Button
             android:text="E"
             android:id="@+id/key_e"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_z"
+            app:layout_constraintEnd_toStartOf="@id/key_r" />
 
         <Button
             android:text="R"
             android:id="@+id/key_r"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_e"
+            app:layout_constraintEnd_toStartOf="@id/key_t" />
 
         <Button
             android:text="T"
             android:id="@+id/key_t"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_r"
+            app:layout_constraintEnd_toStartOf="@id/key_y" />
 
         <Button
             android:text="Y"
             android:id="@+id/key_y"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_t"
+            app:layout_constraintEnd_toStartOf="@id/key_u" />
 
         <Button
             android:text="U"
             android:id="@+id/key_u"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_y"
+            app:layout_constraintEnd_toStartOf="@id/key_i" />
 
         <Button
             android:text="I"
             android:id="@+id/key_i"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_u"
+            app:layout_constraintEnd_toStartOf="@id/key_o" />
 
         <Button
             android:text="O"
             android:id="@+id/key_o"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_i"
+            app:layout_constraintEnd_toStartOf="@id/key_p" />
 
         <Button
             android:text="P"
             android:id="@+id/key_p"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
-    </LinearLayout>
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_o"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/keybar2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="4dp"
@@ -231,117 +251,137 @@
         <Button
             android:text="Q"
             android:id="@+id/key_q"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_s" />
 
         <Button
             android:text="S"
             android:id="@+id/key_s"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_q"
+            app:layout_constraintEnd_toStartOf="@id/key_d" />
 
         <Button
             android:text="D"
             android:id="@+id/key_d"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_s"
+            app:layout_constraintEnd_toStartOf="@id/key_f" />
 
         <Button
             android:text="F"
             android:id="@+id/key_f"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_d"
+            app:layout_constraintEnd_toStartOf="@id/key_g" />
 
         <Button
             android:text="G"
             android:id="@+id/key_g"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_f"
+            app:layout_constraintEnd_toStartOf="@id/key_h" />
 
         <Button
             android:text="H"
             android:id="@+id/key_h"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_g"
+            app:layout_constraintEnd_toStartOf="@id/key_j" />
 
         <Button
             android:text="J"
             android:id="@+id/key_j"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_h"
+            app:layout_constraintEnd_toStartOf="@id/key_k" />
 
         <Button
             android:text="K"
             android:id="@+id/key_k"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_j"
+            app:layout_constraintEnd_toStartOf="@id/key_l" />
 
         <Button
             android:text="L"
             android:id="@+id/key_l"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_k"
+            app:layout_constraintEnd_toStartOf="@id/key_m" />
 
         <Button
             android:text="M"
             android:id="@+id/key_m"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
-    </LinearLayout>
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_l"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/keybar1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="4dp"
@@ -353,92 +393,116 @@
         <Button
             android:text="W"
             android:id="@+id/key_w"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_x"
+            app:layout_constraintHorizontal_weight="1" />
 
         <Button
             android:text="X"
             android:id="@+id/key_x"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_w"
+            app:layout_constraintEnd_toStartOf="@id/key_c"
+            app:layout_constraintHorizontal_weight="1" />
 
         <Button
             android:text="C"
             android:id="@+id/key_c"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_x"
+            app:layout_constraintEnd_toStartOf="@id/key_v"
+            app:layout_constraintHorizontal_weight="1" />
 
         <Button
             android:text="V"
             android:id="@+id/key_v"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_c"
+            app:layout_constraintEnd_toStartOf="@id/key_b"
+            app:layout_constraintHorizontal_weight="1" />
 
         <Button
             android:text="B"
             android:id="@+id/key_b"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_v"
+            app:layout_constraintEnd_toStartOf="@id/key_n"
+            app:layout_constraintHorizontal_weight="1" />
 
         <Button
             android:text="N"
             android:id="@+id/key_n"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_round"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:backgroundTint="@color/color_button_background"
-            android:textColor="@color/color_button_foreground" />
+            android:textColor="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_b"
+            app:layout_constraintEnd_toStartOf="@id/btn_space"
+            app:layout_constraintHorizontal_weight="1" />
 
         <ImageButton
             android:id="@+id/btn_space"
-            android:layout_width="115dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_button_background"
-            android:tint="@color/color_button_foreground" />
+            android:tint="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/key_n"
+            app:layout_constraintEnd_toStartOf="@id/btn_backspace"
+            app:layout_constraintHorizontal_weight="2.5" />
 
         <ImageButton
             android:id="@+id/btn_backspace"
             android:tooltipText="Effacer"
             android:src="@drawable/ic_backspace"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@drawable/shape_round"
             android:backgroundTint="@color/color_button_background"
-            android:tint="@color/color_button_foreground" />
+            android:tint="@color/color_button_foreground"
+            app:layout_constraintStart_toEndOf="@id/btn_space"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1.5" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
