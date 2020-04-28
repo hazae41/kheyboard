@@ -10,8 +10,8 @@ android {
         applicationId "fr.rhaz.kheyboard"
         minSdkVersion 26
         targetSdkVersion 29
-        versionCode 302
-        versionName "3.0.2"
+        versionCode 303
+        versionName "3.0.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

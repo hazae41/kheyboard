@@ -70,11 +70,8 @@ class Stickers(val keyboard: Keyboard) : FakeFragment {
         }
 
         btn_favorite.setOnClickListener {
-            if (!keyboard.premium) premium()
-            else {
-                category = Favorite
-                update(true)
-            }
+            category = Favorite
+            update(true)
         }
 
         btn_history.setOnClickListener {

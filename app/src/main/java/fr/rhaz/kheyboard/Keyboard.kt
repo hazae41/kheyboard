@@ -64,10 +64,8 @@ class Keyboard : InputMethodService() {
     val vibrator get() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     val clipboard get() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-    val gifSupport
-        get() = getContentMimeTypes(currentInputEditorInfo).any {
-            compareMimeTypes(it, "image/gif")
-        }
+    fun supports(mime: String) =
+        getContentMimeTypes(currentInputEditorInfo).any { compareMimeTypes(it, mime) }
 
     val history get() = tryOr(JSONArray()) { JSONFile(settings).getJSONArray("history") }
     val favorites get() = tryOr(JSONArray()) { JSONFile(settings).getJSONArray("favoris") }
@@ -94,17 +92,35 @@ class Keyboard : InputMethodService() {
     fun send(info: StickerInfo) = GlobalScope.launch(Main) {
         push(info)
 
-        if (!gifSupport) {
+        val extension = info.url.split(".").last()
+        val mime = when (extension) {
+            "gif" -> "image/gif"
+            "png" -> "image/png"
+            "jpg" -> "image/jpeg"
+            "jpeg" -> "image/jpeg"
+            else -> return@launch
+        }
+
+        if (!supports(mime)) {
             currentInputConnection.commitText(" ${info.url}", 1)
             return@launch
         }
 
-        val file = withContext(IO) {
-            Glide.with(this@Keyboard).asFile().load(info.url).diskCacheStrategy(DATA).submit().get()
+        val tmp = File(getExternalFilesDir(null), "sticker.$extension")
+
+        withContext(IO) {
+            tmp.delete()
+
+            val file = Glide
+                .with(this@Keyboard).asFile().load(info.url)
+                .diskCacheStrategy(DATA).submit().get()
+
+            file.copyTo(tmp, true);
         }
 
-        val uri = FileProvider.getUriForFile(this@Keyboard, "$packageName.fileprovider", file)
-        val description = ClipDescription("Sticker", arrayOf("image/gif"))
+        if (!tmp.exists()) return@launch
+        val uri = FileProvider.getUriForFile(this@Keyboard, "$packageName.fileprovider", tmp)
+        val description = ClipDescription("Sticker", arrayOf(mime))
         val content = InputContentInfo(uri, description)
         val flag = InputConnection.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
         currentInputConnection.commitContent(content, flag, null)
